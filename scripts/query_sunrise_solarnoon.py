@@ -11,9 +11,11 @@ import pandas as pd
 import base64
 import pdfkit as pdf
 
-def print_sunrise_solornoon(timeanddate_city_url):
+def print_sunrise_solarnoon(timeanddate_city_url):
     if timeanddate_city_url.find('/'):
         fname = timeanddate_city_url.rsplit('/', 1)[1]
+        fname = fname.replace('?','_')
+        fname = fname.replace('&','_')
     else:
         fname = base64.b64encode(timeanddate_city_url)
 
@@ -42,10 +44,11 @@ def print_sunrise_solornoon(timeanddate_city_url):
     pdf.from_file(fname + '.html', nazivFajla)
     print ('--------------------------------------------')
 
-print_sunrise_solornoon('https://www.timeanddate.com/sun/canada/vancouver')
-print_sunrise_solornoon('https://www.timeanddate.com/sun/canada/ottawa')
-print_sunrise_solornoon('https://www.timeanddate.com/sun/china/beijing')
-print_sunrise_solornoon('https://www.timeanddate.com/sun/china/guangzhou')
-print_sunrise_solornoon('https://www.timeanddate.com/sun/china/shanghai')
-print_sunrise_solornoon('https://www.timeanddate.com/sun/china/chengdu')
+#print_sunrise_solarnoon('https://www.timeanddate.com/sun/canada/vancouver')
+#print_sunrise_solarnoon('https://www.timeanddate.com/sun/canada/ottawa')
+#print_sunrise_solarnoon('https://www.timeanddate.com/sun/china/beijing')
+#print_sunrise_solarnoon('https://www.timeanddate.com/sun/china/guangzhou')
+#print_sunrise_solarnoon('https://www.timeanddate.com/sun/china/shanghai')
+#print_sunrise_solarnoon('https://www.timeanddate.com/sun/china/chengdu')
+print_sunrise_solarnoon('https://www.timeanddate.com/sun/china/chengdu?month=1&year=2020')
 
