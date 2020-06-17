@@ -1,4 +1,6 @@
-### [百业经](http://www.dzj.fosss.org/relative/sdhb/baiyejing)
+# [百业经](http://www.dzj.fosss.org/relative/sdhb/baiyejing)
+
+<http://www.fosss.org/book/baiyejing/>
 
 - [（32）一只大虫 ——盗用僧物　恒时受报](http://www.dzj.fosss.org/relative/sdhb/baiyejing?start=32)
 - [（38）饿　鬼——错用僧物　得饿鬼报](http://www.dzj.fosss.org/relative/sdhb/baiyejing?start=38)
