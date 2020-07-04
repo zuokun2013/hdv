@@ -1,0 +1,1 @@
+find $1 -name "*_.md" -exec $(dirname $0)/md2pdf.sh {} \;
