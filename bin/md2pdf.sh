@@ -1,4 +1,4 @@
-echo "--- $1 ---"
+echo "--- `date` $1 ---"
 pandoc $1 -f markdown -s \
     -V 'mainfont:DejaVu Sans' \
     -V 'CJKmainfont:Yuanti SC' \
@@ -8,6 +8,5 @@ pandoc $1 -f markdown -s \
     --pdf-engine=xelatex --toc --number-section  \
     -o $1.pdf
 
-echo `date`
-echo "--- $1 done. ---" 
+echo "--- `date` $1 done. ---" 
 echo ""
