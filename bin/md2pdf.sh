@@ -4,7 +4,7 @@ pandoc $1 -f markdown -s \
     -V 'CJKmainfont:Yuanti SC' \
     -V 'linkcolor:blue' \
     -V 'geometry:a5paper' \
-    -V 'geometry:margin=1.2cm' \
+    -V 'geometry:margin=1.5cm' \
     -V 'fontsize=12pt' \
     --pdf-engine=xelatex --toc   \
     -o $1.pdf
