@@ -33,7 +33,7 @@ async function main() {
   });
 
   // open in browser
-  await engine.openInBrowser({ runAllCodeChunks: false });
+  //await engine.openInBrowser({ runAllCodeChunks: false });
   await engine.markdownExport({ runAllCodeChunks: false });
 
   return process.exit();

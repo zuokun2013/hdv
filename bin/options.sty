@@ -1,2 +1,14 @@
- \usepackage{setspace}
- \doublespacing
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{lastpage}
+\doublespacing
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\leftmark}
+\rfoot{\thepage\ of \pageref{LastPage} }
+\lfoot{仅供参考}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+    

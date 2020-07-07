@@ -18,5 +18,16 @@
             "command":  "node /Users/jzhang@ca.ibm.com/forkrepo/hdv/bin/mpe-markdown-export.js ${file} ",
             "group": "build"
         }
+
+        
+
+        {
+            "label": "generate pandoc pdf file",
+            "type": "shell",
+            "command":  "/Users/jzhang@ca.ibm.com/forkrepo/hdv/bin/md2pdf.sh ${fileDirname}/${fileBasenameNoExtension}_${fileExtname} ",
+            "group": "build",
+            "dependsOn": ["export mpe markdown file"]
+        }
+
     ]
 }
