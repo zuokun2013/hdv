@@ -1,15 +1,17 @@
 
 \usepackage[utf8]{inputenc}
-\usepackage[b6paper,margin=15mm]{geometry}
+\usepackage[a6paper,top=15mm,bottom=15mm,left=5mm,right=5mm]{geometry}
+\usepackage[printwatermark]{xwatermark}
+\newwatermark[allpages,fontfamily=bch,color=gray!7,angle=60,scale=1.5,xpos=0,ypos=0]{慧灯小组内部参考 \\[.25\baselineskip] 请勿外传}
 \usepackage{setspace}
 \usepackage{lastpage}
-\linespread{1.4}
+\linespread{1.5}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\leftmark}
 \rfoot{\thepage\ of \pageref{LastPage} }
-\lfoot{仅供参考}
+\lfoot{\rightmark}
 \renewcommand{\headrulewidth}{1pt}
 \renewcommand{\footrulewidth}{1pt}
 \flushbottom
