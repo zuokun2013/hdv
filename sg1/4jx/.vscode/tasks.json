@@ -29,5 +29,13 @@
             "dependsOn": ["export mpe markdown file"]
         }
 
+        {
+            "label": "generate slides pdf file",
+            "type": "shell",
+            "command":  "/Users/jzhang@ca.ibm.com/forkrepo/hdv/bin/md2pdf-slides.sh ${file} ",
+            "group": "build",
+            "dependsOn": []
+        }
+
     ]
 }

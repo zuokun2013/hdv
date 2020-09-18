@@ -25,6 +25,7 @@ def parse_page():
     }
 
     url = 'https://www.huidengzhiguang.com/index.php/download/yinshipin?view=items&gid=13.1'
+    url = 'https://www.huidengzhiguang.com/index.php/download/yinshipin?view=items&gid=13.9'
 
     page = requests.get(url, headers=headers)
 
