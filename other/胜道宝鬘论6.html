@@ -1,0 +1,609 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; zoom: 90%; }
+#math-inline-preview-content { zoom: 1.1; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+/** initialize css counter */
+
+ :root {--mermaid-font-zoom:1em ;}  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}} .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style><title>胜道宝鬘论6</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='宝鬘庄严论-9'><span>宝鬘庄严论 9</span></h1><h1 id='胜道宝鬘论-6'><span>胜道宝鬘论 6</span></h1><p><span>May 30 2021</span></p><p><a href='https://mp.weixin.qq.com/s/SOj1ekOBfPwmV1C0dowz0w' target='_blank' class='url'>https://mp.weixin.qq.com/s/SOj1ekOBfPwmV1C0dowz0w</a></p><p><span>十项所知，即佛教徒必须要了解和知道的十个问题</span></p><h2 id='61-外在的现相是迷乱应当了知它无有真实性'><span>6.1 </span><strong><span>外在的现相是迷乱，应当了知它无有真实性</span></strong></h2><p><span>这个观念，决定了我们对待世界、面对物质的态度。</span></p><p><span>在西方几千年的历史中，唯心主义与唯物主义，都分别对物质与宇宙有着不同的解读，固执己见、争论不休。</span><strong><span>但佛陀却认为，世界既有物质的成分，也有精神的成分。外面的世界既不是唯物，也不是唯心，而是一种幻觉。</span></strong><span>并劝告他们说：别吵啦，没有什么好吵的，都是一种错觉而已，根本就不存在什么唯心唯物。</span></p><p><span>也许刚刚进入佛门的人很难理解：外面的一切如此真实，怎么可能是幻觉呢？佛教会不会把我们带到另一个玄乎其玄的世界，让我们离开正常人的生活，去过一种不食人间烟火的生活呢？</span></p><p><span>不，这样的担忧大可不必。佛教不会让我们离开现有的生活，只是让我们改变对世界的态度，即要知道，</span><strong><span>我们今天所生活的世界，是一个庞大的虚幻世界。</span></strong></p><p><strong><span>我们需要放下杀盗淫妄等罪业</span></strong></p><p><span>很多人因为不了解佛法，更没有深入学习佛法，所以对佛教有很多误解。一听说佛教讲无我、空性，就理解为一无所有，认为佛教否定现实生活中自我的存在，否定世界的存在。其实，佛陀从不会否定感官世界中自我假象的存在。</span></p><p><span>有很多人一听禅宗里讲放下，就误认为什么都不能执著，都要放下，包括家庭、物质、烧香、拜佛、念经、磕头都要放下。还有一些人又走入另一个极端，什么都不愿意放下，只知道以功利的心态去烧香、拜佛，祈求佛的保佑。这两种极端的观念，都是不对的。</span></p><p><span>虽然最后成佛的时候，要放下一切。我们现阶段不可或缺的一切，都会被更好的东西所替代。但这只是将来的事情，</span><strong><span>目前我们需要放下的，是杀盗淫妄等罪业，是对其他众生有害的行为，却不能放下闻思修，不能放下对解脱的追求。</span></strong></p><p><span>对字面词句的误解，往往会导致一系列的问题。有些人一看到“欲望是发展的动力”这句话，就认为不能控制欲望，一定要让欲望引领世界。但目前的事实是，很多人已经被欲望的绳索缠裹得气喘吁吁甚至奄奄一息，缺乏智慧的欲望无限膨胀，已经让人类南辕北辙，奔往另一个方向。</span></p><p><strong><span>一定要尊重因果</span></strong></p><p><span>佛教徒并不是穷人的代名词，更不一定要过艰苦的日子。闻思修、戒定慧、智慧和慈悲，才是衡量佛教徒的标准。</span></p><p><span>在没有开悟的时候，世界非常真实。此时的我们不可能放下欲望，但一定要尊重因果，该有的欲望要有，不该有的欲望绝不能有。如果不尊重因果规律，一定会感受痛苦。</span></p><p><span>但从更高的层次来讲，就像六祖惠能大师讲的“本来无一物”，世上的任何东西都从来不存在。就像梦中赚了一百万，又输了一百万，赚钱的时候欢喜若狂，输钱的时候痛苦万状，但这大喜大悲的一切，都从来不存在，一切都是幻觉。</span></p><p><strong><span>不要过度执著世间的一切，要知道世界是虚幻的。</span></strong><span>因为我们的感官出了问题，才会认为它是真实的。</span></p><h2 id='62-内在心性是无我应当了知它是空性'><span>6.2 </span><strong><span>内在心性是无我，应当了知它是空性</span></strong></h2><p><span>所谓的精神，包括我们的眼耳鼻舌身感知到光、声波等等的感受，以及我们的第六意识所作出的判断、思维，以及最深层次的意识。</span></p><p><span>比如，在深度昏迷的时候，虽然眼耳鼻舌身意层面的精神都不存在了，但有一个最基本的深度精神，却不会离开我们的身体，所以这时候身体不叫尸体。当我们死亡的时候，连最深层次的精神也走了，这时候我们的身体就被称为尸体。生死，就是以精神的是否存在来区别的。</span></p><p><strong><span>佛陀告诉我们，精神也是虚幻的、无我的。</span></strong><span>尽管在不思考、不观察的时候，有一个自我的感觉。我们从小到大，也已经默认了自我的存在。但如果去观察，却找不到所谓的“我”。</span></p><p><span>虽然我们会说，“我的头”、“我的手”、“我的腿”、“我的心脏”、“我的肺”、“我的大脑”、“我的精神”……但这些都只是“我”所拥有的，“我”自己究竟是什么呢？</span></p><p><span>尽管有些时候，我们头痛的时候会说“我痛”，心脏痛和手痛的时候，也会说“我很痛”，但这只是把头、心脏、手当作了“我”而已。</span></p><p><span>这样一观察，会发现“我”的存在有漏洞。但自古以来，我们却习惯于这种约定俗成，任何人都不会去想“我”是否存在这个问题。</span></p><p><strong><span>佛陀却告诉我们，如果不想出离轮回，不想挣脱六道的藩篱，就不要观察，当作有一个“我”的存在，然后尽量断恶行善。你现在所拥有的一切，是你自己过去福德的果报，你有权利享受这一切，只是不要忘记继续创造这样的美好幸福。这在佛教里面，叫作人天乘。</span></strong></p><p><span>有些人说，我不想成佛，不想往生西方极乐世界，不想成为阿罗汉，不想离开轮回，只想生生世世都过上幸福的日子。这种人，就可以修学人天乘。</span></p><p><span>如果不满足于现状，一定要知道“我”为什么要生老病死，“我”为什么生生世世都在轮回中流转等等，就可以设法突破陈旧的固有观念，</span><strong><span>找到最终极究竟的答案——空性，</span></strong><span>并为之奋斗不懈。</span></p><h2 id='63-中间的分别念依缘而生应当了知它是骤然性'><span>6.3 </span><strong><span>中间的分别念依缘而生，应当了知它是骤然性</span></strong></h2><p><strong><span>无论好的念头，不好的念头，都是从因缘而产生。凡是有因有缘而产生的，都是短暂且变化无常的。</span></strong></p><p><span>我们不要以为：自己今天找到了一个对世界、对自我最准确的价值观与定义，这是人类对世界的顶尖认知，它永远都不会被淘汰。</span></p><p><span>其实，今天自以为是的心念，总有一天会遭到自己的否定。人类就是这样不断建立，又不断打破。</span><strong><span>当有一天我们脱离了感官的窠臼，用另一种方法去感知世界的时候，我们的所有价值观都将退出历史的舞台。</span></strong></p><p><span>比如，当人类还没有显微镜的时候，我们会认为，砖头、楼房、石头等物体是静止的。当人类拥有显微镜以后，过去的判断已经落伍。在修行的过程中，随着心灵的提升，我们的感官也会不断进步。佛教不追求神通，但禅定好的修行人，却能改变眼睛的结构，能看到平常人看不到的东西，这叫做天眼。</span></p><p><span>我们今天的很多观念，都是愚昧无知的。佛教讲这些的目的，不仅仅是让我们学会一种知识，而是让我们通过这些知识与方法，来减少乃至最终消灭我们的烦恼与痛苦。</span></p><p><strong><span>佛教认为，精神上的痛苦，来自于自己的愚昧；从长远的角度来讲，肉体之苦的源头也是愚昧。</span></strong><span>因为我们把所有东西都看得非常真实，故而会紧抓不放，深执不渝。其后果就是，越是让我们执著的事物或人，越会给我们带来痛苦。</span></p><p><strong><span>幸福不在外面，就在自己的内心</span></strong></p><p><span>这些痛苦，不是来源于事物或人本身，而是来源于我们的心态。佛教讲“境随心转”，最简单的解释就是，当我们心情很好的时候，会看到每一个人都很可爱，每一个地方都很美好。哪怕是陌生人，也可以莫名其妙地给自己带来快乐的感受。这时候就算发生一些违缘，也不会给自己带来创伤。反之，当我们不开心的时候，则即使自己最爱的亲朋好友也不能给我们带来幸福快乐，每一个人都很可恶、很可憎，都让自己心生不快。哪怕别人没有说自己，也会认为别人在说自己的坏话。别人无心的一句话或一个动作，都认为是在讽刺和侮辱自己。多疑、猜忌、怨恨、不满，这都与自己的心态有关。</span></p><p><span>当我们深深体会到幸福不在外面，就在自己的内心，并掌握了寻找幸福的方式以后，无论贫富贵贱，无论顺逆盛衰，都不会动摇内心的轻松自在、自由逍遥。有了这种内在的自由以后，即使被关在监狱里，也开开心心、快快乐乐。这，才是真正永久的幸福。</span></p><p><strong><span>佛陀的人生哲理，可以运用于我们的生活、工作等任何地方，这就是佛法融入生活。其前提，就是长期的打坐修行，训练我们现在这颗不自在的心。</span></strong></p><p><span>如果内心不自在，则哪怕是拥有几百亿、几千亿身价的全球首富，也是怨气重重、焦虑不安。即使在走到生命尽头，咽下最后一口气的时候，也是怀着对世界的强烈不满与抱怨，甚至是在刻骨的仇恨中告别这个世界的。</span></p><p><strong><span>佛教经常提醒我们，学佛、信佛，有机会追求永久幸福与内在自由的生命来之不易，我们不能当一个享乐主义者，不能沉迷在眼前一点点的幸福当中。</span></strong><span>如果不懂得珍惜和感恩，傲慢心就会无限膨胀，贡高我慢、自以为是，继而开始侮辱、诽谤其他人，这是让福报疾速下降的不智之举。一方面不去创造新的幸福因素，同时又迅速地消耗着过去的幸福因素，等待我们的，必然是一片黑暗。</span></p><p><a href='https://mp.weixin.qq.com/s/6GueFOh9h2rZWbH3awcz9A' target='_blank' class='url'>https://mp.weixin.qq.com/s/6GueFOh9h2rZWbH3awcz9A</a></p><h2 id='64-大种的身语是有为法应当了知它的无常性'><span>6.4 大种的身语是有为法，应当了知它的无常性</span></h2><p><strong><span>什么叫作有为法？也即因缘和合而产生的东西。</span></strong></p><p><span>我们的身体、语言，以及我们所拥有的财产、名誉、地位等所有的一切，都是有为法，都是变化无常的。比如，我们今天之所以开心，是因为开心的因缘都具备了。如果明天这些开心的因缘中的大部分或某个比较关键的因缘不具备，我们明天就不会开心。</span></p><p><span>不要以为自己永远都会有名声、有财富。这些都是因缘产生的，任何人都无法掌控因缘的发展趋势。在每一天的报纸、电视等新闻中，我们都会看到各种巨大的变化和无常。既然无法抗拒，就要学会接受。</span></p><p><span>很多人不愿意接受自己的衰老，所以每年会花费十多万乃至几十万元钱去打针、拉皮、除皱、染发……这都是在跟自然规律作对。但在自然规律面前，人的能力非常渺小，哪怕竭尽全力，也难以与之抗衡。</span></p><p><strong><span>无论家庭破碎，还是生意失败，都要顺其自然，要学会提得起，放得下。要接受现实和主观之间的矛盾。这些道理不仅要知道，还要反复训练。</span></strong></p><p><span>四加行的第二个修法，就是死亡无常。大小乘的基础修法，是四念处。四念处其中之一，也是无常。</span></p><p><strong><span>佛陀讲过：所有的脚印中，大象的脚印最殊胜。所有的观念当中，无常的观念最殊胜。</span></strong></p><p><span>有一种大象走路非常小心翼翼，绝不会走到悬崖、险滩或其他危险的地方。如果循着这种大象的足迹走，一定非常安全。同样，如果对无常有所准备，一旦无常来临，就不会过于痛苦。</span></p><p><span>无常随时都会来袭击我们，生命结束的时候，钱财、名声都无法陪伴我们，都变得一文不值。唯有精神层面的贪嗔痴、出离心、菩提心、证悟空性的智慧才会与我们同在。</span></p><h2 id='65-众生的苦乐由业所生应当了知业果无欺'><span>6.5 众生的苦乐由业所生，应当了知业果无欺</span></h2><p><span>对我们普通人来说，认知善恶因果特别重要。很多人本来很善良，却因为不明事理，不知取舍，所以造罪无数。很多人因为命运造化，受到家庭、教育、社会的影响，大部分慢慢失去了天生的良知，走向了邪恶的深渊。而另一些人却变得人格越来越完善，心地越来越善良，最终变成一个大菩萨或一个好修行人。这一切的变化，都源于自己的福报因缘。</span></p><p><span>我们要知道，因果规律不是人为的，只是大自然变化的一部分。世界的一切，都不是什么万能神创造的，而是万物自身的因缘产生的。</span></p><p><strong><span>尊重因果，是尊重大自然的规律，而并不是尊重释迦牟尼佛。</span></strong><span>我们最大的毛病，就是会找各种各样的理由去否定自己不知道的东西，这都是因为我们的愚昧，佛教称之为无明。因为无明，而导致了各种烦恼与痛苦。所以，即便我们不学佛，不相信佛陀，但也应该相信因果。</span></p><p><span>如果这些最基本的要求都不重视，又何谈顿悟、证悟大圆满、即身成佛？凡夫都好高骛远，但如果失去了立足之本，一切的目标都只是空谈。</span></p><p><span>当然，既然身为凡夫，必然会有各种各样的缺陷与不如法。就像按照达尔文的生物进化论，在猿猴慢慢进化为人的过程中，有一个阶段既不是人，也不完全是猴子。（不过，如今达尔文的进化论也开始遭到了质疑。）我们现在也是这样，既不是佛菩萨，也不是根本没有学佛的人，而是介于二者之间的修行人。</span><strong><span>我们有好的一面，也有不好的一面，这是很正常的情况，但起码要断除杀盗淫妄方面的严重罪业，特别是杀害其他生命的罪业。</span></strong></p><p><span>如果彻底无视因果，肆意杀戮动物，最后人类必将丧心病狂到以对待动物的方式，来对待人类自己，并冠之以各种冠冕堂皇的借口。</span></p><p><span>在大自然的规律面前，所有的生命都是平等的。</span><strong><span>我们应该对自然规律心生敬畏。有毒食品、腐败贪污、世风日下等现代社会的很多问题，都是因为对自然缺乏敬畏而造成的。</span></strong></p><p><span>如果懂得因果，却又经不起诱惑，就需要修四个外加行当中的人身难得、死亡无常、因果不虚和轮回是苦。</span></p><p><span>若能在因果取舍上慎重一点，就不会做贼心虚，就不会心怀歉疚，就可以坦坦荡荡、光明正大地过日子。即使遇到一些不公正待遇，也会从因果上找原因，而不会责怪、抱怨或仇视他人。这不是阿 Q 式的自我安慰，而是生起智慧后的明智之举。</span></p><p><a href='https://mp.weixin.qq.com/s/QCbJUL_Bs-IkRwHTtQmtCw' target='_blank' class='url'>https://mp.weixin.qq.com/s/QCbJUL_Bs-IkRwHTtQmtCw</a></p><h2 id='66-痛苦是出离的因应当了知它是善知识'><span>6.6 </span><strong><span>痛苦是出离的因，应当了知它是善知识</span></strong></h2><p><span>生活显得一帆风顺的人，很难产生出离心，容易把生活过于理想化，天天都自鸣得意地说：“明天会更好，我将来一定会成功，我的前途永远都是光明的。”其实，再过若干年以后，我们不愿意看到的很多场景都会出现，白发苍苍、牙齿脱落、满脸皱纹，甚至生活都无法自理……这个是光明吗？再往后走，人都不存在了，当然更不是光明。</span></p><p><span>虽然乐观是一种力量，但如果乐观过度，到了自欺欺人、掩耳盗铃的程度，不作任何思想准备，没有丝毫危机感，负面的作用就会日益凸显。当遭遇自然灾害、亲人离世或倒闭破产等重大变故的时候，就会一蹶不振、绝望至极，甚至失去继续生活的勇气。这时候才能深深体会到，未来的前途并不是光明，人生、轮回并不幸福，世界并不完美。之前的一帆风顺，只是因为运气使然，总有一天，人生会走下坡路，接踵而至的麻烦正在前面等着我们。有些人因此而彻底对红尘失去了信心，选择了出家或修行的路。</span></p><p><span>正因为如此，所以很多人对佛教产生了一种印象，认为出家是在社会上实在混不下去了，已经走投无路之际的选择。其实二者之间并没有必然联系。当然，如果在人生的低谷选择了出家的路，并一直坚持下去，那对当事人来说，此时的失败和打击就成了好老师，胜过了平时天天的说教。</span></p><p><span>很多人深有体会，平时上师说成千上万次，不如一次打击刻骨铭心。所以，亲历无常和痛苦，反而成了进步的阶梯，成了生命旅途中的重要里程碑与转折点。痛苦给我们的教育，远远超过了一生在学校当中所受的教育。</span></p><p><span>如果想拒绝痛苦，就要去拒绝它的因，而不要去拒绝它本身。实际上，当我们勇敢地面对痛苦的时候，它已经不再是痛苦了。如果能勇敢地面对痛苦，会有两个好处：首先可以降低痛苦的程度，同时还可以在痛苦中学会认识轮回的真相，并让自己变得更加坚强。</span></p><p><span>虽然佛教说轮回痛苦，但这种观念一点也不消极，因为我们有办法解决这个问题。解决的前提，是要了知痛苦，就像医生首先告诉我们，你有病，必须接受治疗。我们也要承认自己有病，并积极配合医生完成下一步的治疗，我们的病才能治愈。积极治病，恢复健康，不但不是消极的人生态度，而且应该是积极乐观向上的。如果病人讳疾忌医，不积极配合，等到病入膏肓，无药可救，那才是真的很消极、很悲观了。佛教首先让我们了解痛苦的现状，然后教给我们正确的解决方法，让我们突破、超越痛苦，哪怕是普通人，都完全有机会成为像释迦牟尼佛那样伟大的人，这难道不是最积极、最乐观的人生态度吗？</span></p><p><strong><span>仅仅从理论上知道还不够，还需要长期的修行</span></strong></p><p><span>其训练方法，就是四加行中的轮回痛苦与四念处的修法。具体的修法，在《大圆满前行·普贤上师言教》与《慧灯之光》里讲得很清楚，希望大家能静下来仔细思考这些问题。我们要抓紧时间修行，不能一拖再拖，变成拖延症患者，最后一无所成。</span></p><p><span>生命不仅仅是今生的几十年，而是找不到开始，也看不见结束的漫漫长途。生命的力量，已经超过了宇宙间的万事万物。哪怕到了耄耋之年，我们也不能放弃希望与追求。生而为人，有思考的能力，是千载难逢的机会。如果白白蹉跎，等到来世换了一个身体以后，就不一定有这样的思考能力了。</span><strong><span>我们务必抓住这次机会，扭转生命的方向，结束自己的痛苦，同时还要转变别人的人生方向，让更多的人学佛、修行、成佛，是我们来此世间的伟大使命。</span></strong></p><h2 id='67-快乐是轮回的根源应当了知贪恋它是魔'><span>6.7 </span><strong><span>快乐是轮回的根源，应当了知贪恋它是魔</span></strong></h2><p><span>幸福也可以变成魔障。如何理解这句话呢？幸福是所有生命共同追求的目标，难道佛教徒一定要远离幸福，远离快乐吗？</span></p><p><span>不是这样。前面介绍过，幸福、痛苦、金钱等等既不是善，也不是恶。善恶的界定，取决于心态。普通人容易沉迷在当前的短暂幸福中，消耗着过去的福报，不懂得进一步去创造幸福的因素，更不懂得超越幸福，去追求更高的境界——无漏之大乐。</span></p><p><strong><span>所谓无漏之大乐，密宗经常用“大乐”这个词，来形容佛菩萨境界中的超级快乐。</span></strong><span>在佛的境界中，没有痛苦和幸福的分别与感受，因为它已经超越了感官所能感受到的快乐，人类的语言无法直接表达，所以在“乐”的前面加了一个“大”字来描述。其实这也是不准确的，因为“大”和“小”都是我们的分别念，而佛菩萨的快乐，已经超越了感知的范畴，人类的语言已经无法表述。</span></p><p><span>所有人类的语言，都只是为了方便沟通而创造的工具而已。</span></p><p><strong><span>魔障有广义和狭义之分：凡是对解脱有障碍的东西，无论是物质还是精神，都属于广义的魔障。这种魔障不一定是生命，也不一定是鬼。狭义的魔障，则专指我们平时讲的妖魔鬼怪，这种魔鬼，就是一种生命。</span></strong></p><p><span>幸福是魔障的意思，是当我们面对幸福或快乐的时候，忘乎所以，变成极端享乐主义者，只追求物质享受，放弃了其他的理想和目标，此时的幸福，就变成魔障了。</span></p><p><span>但具有讽刺意味的是，许多极端享乐主义者，最后会对物质失去信心，变得失望和绝望。因为他们之前高估了物质的价值，当他们真正拥有的时候，才发现物质并没有给他们带来想象中的满足感。灰心丧气之余，有些人只有靠吸毒等方式来刺激、麻痹自己，有些人最后变成了精神病人。所以，不重视意识的提升，是非常可怕的。</span></p><p><span>快乐本身并不是魔障，是我们面对快乐的方式出了问题，快乐才变成了魔障。</span><strong><span>若能将幸福和修行二者圆融，一边享受人类顶级的幸福，同时修持最顶级的慈悲心和智慧，此时的幸福，就不但不是魔障，反而是修行的顺缘。</span></strong></p><p><span>当然，要让幸福和修行二者不矛盾，且能相辅相成，需要比较好的修行境界。普通人往往会偏于物质的一端，故而将幸福变成了魔障。</span></p><p><strong><span>佛教的一切修行，都是为了调伏自己的心，而不是为了追求形式。</span></strong><span>比如，释迦牟尼佛住世的时候，本来不允许比丘的房间用香。但有一位比丘打坐的时候如果没有香味，他的心就静不下来，所以佛陀就特意开许他用香。很多出家人对此十分不解，佛陀解释说，他前世是天人，非常喜欢洁净与物质享受，只有在舒适的环境里，心才能静得下来，这是过去的习气使然。这个例子说明，</span><strong><span>佛教的一切规矩，都是为提升心灵而设计的方案。只要对提升心灵有帮助，外在表象都不是很重要。</span></strong></p><p><span>人的欲望是无限的，而感官的接受能力却有一个尺度。如果超过了这个尺度，反而感觉不到幸福。听从无限膨胀的欲望驱使，去寻找更多的物质来刺激自己的感官，感官就会开始排斥。这时候，我们更需要的是安静。</span></p><p><span>为什么许多城市里面的人喜欢到乡下去，就是因为他们需要的不是刺激而是安静。佛陀的方法，就可以化解欲望与感官的矛盾。</span></p><p><a href='https://mp.weixin.qq.com/s/mKTDRVGsAOoi1FK3kLGYWQ' target='_blank' class='url'>https://mp.weixin.qq.com/s/mKTDRVGsAOoi1FK3kLGYWQ</a></p><h2 id='68-散乱愦闹是修行正法的逆缘应当了知福报是障碍'><span>6.8 </span><strong><span>散乱愦闹是修行正法的逆缘，应当了知福报是障碍</span></strong></h2><p><span>因为忙碌是修行的障碍，所以财富也是障碍。为什么这么讲呢？因为要拥有巨大的财富，必然会付出很多精力去赚钱，赚到钱以后，又害怕失去财富，又要用更多的时间去保护财富。</span></p><p><span>按照现在的价值观，所有的有钱人都是成功人士，无论人格再低下，钱的来路再如何不正，都可以忽略不计。</span></p><p><span>但佛陀告诉我们，物质财富的福报未必是好事，有些时候福报反而会变成障碍，让自己忙碌不堪。而忙碌，却正好是修行的障碍和天敌。</span></p><p><span>如果因过去的福报，而让我们轻轻松松地有了钱，这样的钱财不一定是修行的障碍。但假如为了钱要付出大量时间，或者因为有了钱，就肆意啖食生猛海鲜等无数生命，这样财富就成了造罪的因。</span></p><p><span>所以，调整好自己的心态，在基本需求解决以后，就不要为了虚荣而去攀比。以便空出更多的时间，来提升自己的心灵。</span></p><p><strong><span>生活不要走两个极端</span></strong></p><p><span>有些人会说，追求财富的过程是幸福的。其实不是这样，只是因为追求财富的过程中不会感到空虚无聊，所以被误认为是幸福。</span></p><p><span>佛教徒必须要有正确的价值观，要知道物质和心灵的提升哪个更重要，要保持清醒头脑。如果今生走错路，什么时候再有这样的机会就很难说了。</span></p><p><span>有些人在事业巅峰的时候，毅然决然地放下一切去学佛修行，多数朋友不会认同，觉得这个人精神有毛病。而佛教徒又认为，把所有的时间都用来赚钱，整个人变成一部赚钱的机器，没有任何其他追求，实在是太可惜了。佛教徒不是完全不需要赚钱，但在赚钱的同时，也要提升自己的心灵。如果企业家放下生意以后，员工们都无法维持生计，那他就不能选择放弃一切去修行，而应该选择赚钱，帮助员工及家人的生活。但如果员工完全有能力找到其他工作，家人的生活也不会受影响，选择修行不但可以提升自己的心灵，还有希望让更多的人走上解脱之路。那即使企业赚钱方面有一定损失，还是应该选择修行。</span></p><p><span>出家人在受完比丘戒以后，他的老师会给他讲十一句忠告和窍诀。其中一个，就是生活不要走两个极端。如果因为福报而让你无需付出太多时间，就能拥有优越的生活，你不需要拒绝，而故意去过苦行僧的生活。你可以享用现有的财富，只是不要过度沉迷；同时，也不要刻意去过纸醉金迷的奢侈生活。</span></p><p><span>这不仅是对出家人的教言，也是对所有佛教徒的生活要求。佛陀对我们的要求，都是非常开放，非常人性化的。</span></p><p><span>其实只要把握好尺度和分寸，我们完全可以既赚钱又修行，完全不必放下一个，而选择另一个。</span></p><h2 id='69-违缘是行善的鞭策应当了知怨魔是上师'><span>6.9 </span><strong><span>违缘是行善的鞭策，应当了知怨魔是上师</span></strong></h2><p><span>在修行的时候生病或心情不愉快，或者是在工作、生活当中遇到各种不顺利，都可以让我们发现轮回的丑陋真相，从而鼓励我们修行，鼓励我们走上解脱之路。仇人和魔障，都能够像上师一样让我们走向解脱。</span></p><p><span>当然，也不是所有人都会将痛苦化为动力，有些信心不稳定的人反而被彻底打垮，崩溃、绝望，最终走上极端的路。</span></p><p><span>任何事情都有正面和负面的作用，当我们遇到障碍的时候，应该往好的一面去思考。让障碍变成课堂或老师，给我们带来积极向上的力量。</span></p><p><span>现代人拥有的物质享受远远超过了祖先，但却比祖先多了更多的压力、焦虑和不安，我们非常需要精神上的补给与扶持，需要更多的正能量。在精神世界的领域中，佛陀给人类贡献了取之不尽的礼物，我们有义务和责任，把这些礼物传递到全人类的手里。即使有些人不愿意信佛，而选择相信其他宗教，相信唯物论都没问题，我们要传递的不仅仅是信仰，而是佛陀的人生哲理，以帮助所有人走出人生的困境。</span></p><p><strong><span>佛法可以利益所有的生命</span></strong></p><p><span>消除内心的痛苦，是人的本能。只要方法得当，无论任何信仰，都可以借鉴。我们不是企图让全世界所有人都信佛学佛，这是不可能的。但让他们学到一些方法以后，或许对解决人生的难题有一定的帮助。</span></p><p><span>《贤愚经》中说过，佛法就像水，可以利益万物。万物都需要水，无论是人、动物还是植物。同样，佛法也可以利益所有的生命，无论高低贵贱、无论贫富强弱，佛法不是贵族的特权，也不是穷人的专利，它是全人类乃至所有生命共同的财富。当家人、同事、同学等身边的人遇到问题时，我们应该将佛教的方法告诉他们，帮助他们一起去解决生活中的问题，让他们尝到幸福的滋味。不但是自己的亲朋好友，全世界所有的生命，都是我们修菩提心的对象。懂得佛教教义的人，更懂得关爱所有生命。无论天上的鸟，河里的鱼，都能感受到佛法的利益。</span></p><p><span>无论环保、慈善还是弘扬佛法，都要从我做起。弘扬佛法不是出家人的专利，而是所有佛教徒共同的使命。弘扬佛法的前提，是提升自己的修行境界。</span></p><h2 id='610-胜义中万法无有自性应当了知一切都是平等性'><span>6.10 </span><strong><span>胜义中万法无有自性，应当了知一切都是平等性</span></strong></h2><p><span>最后证悟的时候，才知道什么叫作真正的平等。在证悟之前，我们无法感受到平等性，但没有关系，先秉持世俗生活中人与人之间、生命与生命之间、种族与种族之间的平等，最后在证悟了胜义谛佛的境界之后，万事万物都同样地成为空性和光明，除了空性和光明以外没有别的事物，所以都是大平等。</span></p></div></div>
+</body>
+</html>
