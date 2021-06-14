@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="powered-by" content="https://github.com/menduo/mdtree">
+    <title>MdTree</title>
+    <style>
+        #sidebar:hover,pre{overflow:auto}#footer,#footer a{color:#eee}body{padding:40px}#layout>header,.btns{width:auto}#sidebar{width:400px;height:100%;position:fixed;top:0;right:0;overflow:hidden;background:#fff;z-index:100;padding:18px;border:1px solid #ddd;border-top:none;border-bottom:none}#sidebar h1{font-size:16px}#sidebar a,#sidebar a:visited{color:#4183c4}#sidebar a:hover{font-size:120%;color:#1e90ff}#custom-toc-container{padding-left:0;padding-bottom:20px}#content-container{padding-left:0;padding-right:430px;margin:0}.markdown-body{box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;padding:6px 10px;border-radius:3px}
+#footer{margin:30px auto 10px;}
+#generated-at{margin-top:30px;}
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     /** code highliting start **/
+.codehilite .hll{background-color:#ffc}.codehilite{background:#f8f8f8}.codehilite .c{color:#408080;font-style:italic}.codehilite .err{border:1px solid red}.codehilite .k{color:green;font-weight:700}.codehilite .o{color:#666}.codehilite .ch,.codehilite .cm{color:#408080;font-style:italic}.codehilite .cp{color:#BC7A00}.codehilite .c1,.codehilite .cpf,.codehilite .cs{color:#408080;font-style:italic}.codehilite .gd{color:#A00000}.codehilite .ge{font-style:italic}.codehilite .gr{color:red}.codehilite .gh{color:navy;font-weight:700}.codehilite .gi{color:#00A000}.codehilite .go{color:#888}.codehilite .gp{color:navy;font-weight:700}.codehilite .gs{font-weight:700}.codehilite .gu{color:purple;font-weight:700}.codehilite .gt{color:#04D}.codehilite .kc,.codehilite .kd,.codehilite .kn{color:green;font-weight:700}.codehilite .kp{color:green}.codehilite .kr{color:green;font-weight:700}.codehilite .kt{color:#B00040}.codehilite .m{color:#666}.codehilite .s{color:#BA2121}.codehilite .na{color:#7D9029}.codehilite .nb{color:green}.codehilite .nc{color:#00F;font-weight:700}.codehilite .no{color:#800}.codehilite .nd{color:#A2F}.codehilite .ni{color:#999;font-weight:700}.codehilite .ne{color:#D2413A;font-weight:700}.codehilite .nf{color:#00F}.codehilite .nl{color:#A0A000}.codehilite .nn{color:#00F;font-weight:700}.codehilite .nt{color:green;font-weight:700}.codehilite .nv{color:#19177C}.codehilite .ow{color:#A2F;font-weight:700}.codehilite .w{color:#bbb}.codehilite .mb,.codehilite .mf,.codehilite .mh,.codehilite .mi,.codehilite .mo{color:#666}.codehilite .s2,.codehilite .sb,.codehilite .sc{color:#BA2121}.codehilite .sd{color:#BA2121;font-style:italic}.codehilite .se{color:#B62;font-weight:700}.codehilite .sh{color:#BA2121}.codehilite .si{color:#B68;font-weight:700}.codehilite .sx{color:green}.codehilite .sr{color:#B68}.codehilite .s1{color:#BA2121}.codehilite .ss{color:#19177C}.codehilite .bp{color:green}.codehilite .vc,.codehilite .vg,.codehilite .vi{color:#19177C}.codehilite .il{color:#666}
+
+/** code highliting end **/
+/** css from https://github.com/pandao/editor.md */
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format("woff");
+}
+.markdown-body hr:after,.markdown-body hr:before{display:table;content:""}.markdown-body ol,.markdown-body td,.markdown-body th,.markdown-body ul{padding:0}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#333;overflow:hidden;font-family:"Microsoft YaHei",Helvetica,"Meiryo UI","Malgun Gothic","Segoe UI","Trebuchet MS",Monaco,monospace,Tahoma,STXihei,"åŽæ–‡ç»†é»‘",STHeiti,"Helvetica Neue","Droid Sans","wenquanyi micro hei",FreeSans,Arimo,Arial,SimSun,"å®‹ä½“",Heiti,"é»‘ä½“",sans-serif;font-size:16px;line-height:1.6;word-wrap:break-word}.markdown-body strong{font-weight:700}.markdown-body h1{margin:.67em 0}.markdown-body img{border:0}.markdown-body hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}.markdown-body input{color:inherit;margin:0;line-height:normal;font:13px/1.4 Helvetica,arial,freesans,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol"}.markdown-body html input[disabled]{cursor:default}.markdown-body input[type=checkbox]{-moz-box-sizing:border-box;box-sizing:border-box;padding:0}.markdown-body *{-moz-box-sizing:border-box;box-sizing:border-box}.markdown-body a{background:0 0;color:#4183c4;text-decoration:none}.markdown-body a:active,.markdown-body a:hover{outline:0;text-decoration:underline}.markdown-body hr{margin:15px 0;overflow:hidden;background:0 0;border:0;border-bottom:1px solid #ddd}.markdown-body hr:after{clear:both}.markdown-body blockquote{margin:0}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body .task-list-item,li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}.markdown-body dd{margin-left:0}.markdown-body code{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body .octicon{font:normal normal 16px octicons-anchor;line-height:1;display:inline-block;text-decoration:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-body .octicon-link:before{content:'\f05c'}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body .anchor{position:absolute;top:0;left:0;display:block;padding-right:6px;padding-left:30px;margin-left:-30px}.markdown-body .anchor:focus{outline:0}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position:relative;margin-top:1em;margin-bottom:16px;font-weight:700;line-height:1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display:none;color:#000;vertical-align:middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left:8px;margin-left:-30px;text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display:inline-block}.markdown-body h1{font-size:2.25em;line-height:1.2}.markdown-body h1 .anchor{line-height:1}.markdown-body h2{font-size:1.75em;line-height:1.225}.markdown-body h2 .anchor{line-height:1}.markdown-body h3{font-size:1.5em;line-height:1.43}.markdown-body h3 .anchor,.markdown-body h4 .anchor{line-height:1.2}.markdown-body h4{font-size:1.25em}.markdown-body h5 .anchor,.markdown-body h6 .anchor{line-height:1.1}.markdown-body h5{font-size:1em}.markdown-body h6{font-size:1em;color:#777}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body blockquote{padding:0 15px;color:#777;border-left:4px solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;-moz-box-sizing:border-box;box-sizing:border-box}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;background-color:#f7f7f7;border-radius:3px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body pre code{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before{content:normal}.markdown-body .pl-c{color:#969896}.markdown-body .pl-c1,.markdown-body .pl-mdh,.markdown-body .pl-mm,.markdown-body .pl-mp,.markdown-body .pl-mr,.markdown-body .pl-s1 .pl-v,.markdown-body .pl-s3,.markdown-body .pl-sc,.markdown-body .pl-sv{color:#0086b3}.markdown-body .pl-e,.markdown-body .pl-en{color:#795da3}.markdown-body .pl-s1 .pl-s2,.markdown-body .pl-smi,.markdown-body .pl-smp,.markdown-body .pl-stj,.markdown-body .pl-vo,.markdown-body .pl-vpf{color:#333}.markdown-body .pl-ent{color:#63a35c}.markdown-body .pl-k,.markdown-body .pl-s,.markdown-body .pl-st{color:#a71d5d}.markdown-body .pl-pds,.markdown-body .pl-s1,.markdown-body .pl-s1 .pl-pse .pl-s2,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre,.markdown-body .pl-src{color:#df5000}.markdown-body .pl-mo,.markdown-body .pl-v{color:#1d3e81}.markdown-body .pl-id{color:#b52a1d}.markdown-body .pl-ii{background-color:#b52a1d;color:#f8f8f8}.markdown-body .pl-sr .pl-cce{color:#63a35c;font-weight:700}.markdown-body .pl-ml{color:#693a17}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{color:#1d3e81;font-weight:700}.markdown-body .pl-mq{color:teal}.markdown-body .pl-mi{color:#333;font-style:italic}.markdown-body .pl-mb{color:#333;font-weight:700}.markdown-body .pl-md,.markdown-body .pl-mdhf{background-color:#ffecec;color:#bd2c00}.markdown-body .pl-mdht,.markdown-body .pl-mi1{background-color:#eaffea;color:#55a532}.markdown-body .pl-mdr{color:#795da3;font-weight:700}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px Consolas,"Liberation Mono",Menlo,Courier,monospace;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{float:left;margin:.3em 0 .25em -1.6em;vertical-align:middle}.markdown-body :checked+.radio-label{z-index:1;position:relative;border-color:#4183c4}.editormd-html-preview,.editormd-preview-container{text-align:left;font-size:14px;line-height:1.6;padding:20px;overflow:auto;width:100%;background-color:#fff}.editormd-html-preview blockquote,.editormd-preview-container blockquote{color:#666;border-left:4px solid #ddd;padding-left:20px;margin-left:0;font-size:14px;font-style:italic}.editormd-html-preview p code,.editormd-preview-container p code{margin-left:5px;margin-right:4px}.editormd-html-preview abbr,.editormd-preview-container abbr{background:#ffd}.editormd-html-preview hr,.editormd-preview-container hr{height:1px;border:none;border-top:1px solid #ddd;background:0 0}.editormd-html-preview code,.editormd-preview-container code{border:1px solid #ddd;background:#f6f6f6;padding:3px;border-radius:3px;font-size:14px}.editormd-html-preview pre,.editormd-preview-container pre{border:1px solid #ddd;background:#f6f6f6;padding:10px;-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px}.editormd-html-preview pre code,.editormd-preview-container pre code{padding:0}.editormd-html-preview code,.editormd-html-preview kbd,.editormd-html-preview pre,.editormd-preview-container code,.editormd-preview-container kbd,.editormd-preview-container pre{font-family:"YaHei Consolas Hybrid",Consolas,"Meiryo UI","Malgun Gothic","Segoe UI","Trebuchet MS",Helvetica,monospace,monospace}.editormd-html-preview table thead tr,.editormd-preview-container table thead tr{background-color:#F8F8F8}.editormd-html-preview p.editormd-tex,.editormd-preview-container p.editormd-tex{text-align:center}.editormd-html-preview span.editormd-tex,.editormd-preview-container span.editormd-tex{margin:0 5px}.editormd-html-preview .emoji,.editormd-preview-container .emoji{width:24px;height:24px}.editormd-html-preview .katex,.editormd-preview-container .katex{font-size:1.4em}.editormd-html-preview .flowchart,.editormd-html-preview .sequence-diagram,.editormd-preview-container .flowchart,.editormd-preview-container .sequence-diagram{margin:0 auto;text-align:center}.editormd-html-preview .flowchart svg,.editormd-html-preview .sequence-diagram svg,.editormd-preview-container .flowchart svg,.editormd-preview-container .sequence-diagram svg{margin:0 auto}.editormd-html-preview .flowchart text,.editormd-html-preview .sequence-diagram text,.editormd-preview-container .flowchart text,.editormd-preview-container .sequence-diagram text{font-size:15px!important;font-family:"YaHei Consolas Hybrid",Consolas,"Microsoft YaHei","Malgun Gothic","Segoe UI",Helvetica,Arial!important}/*! Pretty printing styles. Used with prettify.js. */.pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.clo,.opn,.pun{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.kwd,.tag,.typ{font-weight:700}.str{color:#060}.kwd{color:#006}.com{color:#600;font-style:italic}.typ{color:#404}.lit{color:#044}.clo,.opn,.pun{color:#440}.tag{color:#006}.atn{color:#404}.atv{color:#060}}pre.prettyprint{padding:2px;border:1px solid #888}ol.linenums{margin-top:0;margin-bottom:0}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}.editormd-html-preview pre.prettyprint,.editormd-preview-container pre.prettyprint{padding:10px;border:1px solid #ddd;white-space:pre-wrap;word-wrap:break-word}.editormd-html-preview ol.linenums,.editormd-preview-container ol.linenums{color:#999;padding-left:2.5em}.editormd-html-preview ol.linenums li,.editormd-preview-container ol.linenums li{list-style-type:decimal}.editormd-html-preview ol.linenums li code,.editormd-preview-container ol.linenums li code{border:none;background:0 0;padding:0}.editormd-html-preview .editormd-toc-menu,.editormd-preview-container .editormd-toc-menu{margin:8px 0 12px;display:inline-block}.editormd-html-preview .editormd-toc-menu>.markdown-toc,.editormd-preview-container .editormd-toc-menu>.markdown-toc{position:relative;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;border:1px solid #ddd;display:inline-block;font-size:1em}.editormd-html-preview .editormd-toc-menu>.markdown-toc>ul,.editormd-preview-container .editormd-toc-menu>.markdown-toc>ul{width:160%;min-width:180px;position:absolute;left:-1px;top:-2px;z-index:100;padding:0 10px 10px;display:none;background:#fff;border:1px solid #ddd;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 3px 5px rgba(0,0,0,.2);-moz-box-shadow:0 3px 5px rgba(0,0,0,.2);-ms-box-shadow:0 3px 5px rgba(0,0,0,.2);-o-box-shadow:0 3px 5px rgba(0,0,0,.2);box-shadow:0 3px 5px rgba(0,0,0,.2)}.editormd-html-preview .editormd-toc-menu>.markdown-toc>ul>li ul,.editormd-preview-container .editormd-toc-menu>.markdown-toc>ul>li ul{width:100%;min-width:180px;border:1px solid #ddd;display:none;background:#fff;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px}.editormd-html-preview .editormd-toc-menu .toc-menu-btn:hover,.editormd-html-preview .editormd-toc-menu>.markdown-toc>ul>li a:hover,.editormd-preview-container .editormd-toc-menu .toc-menu-btn:hover,.editormd-preview-container .editormd-toc-menu>.markdown-toc>ul>li a:hover{background-color:#f6f6f6}.editormd-html-preview .editormd-toc-menu>.markdown-toc>ul>li a,.editormd-preview-container .editormd-toc-menu>.markdown-toc>ul>li a{color:#666;padding:6px 10px;display:block;-webkit-transition:background-color .5s ease-out;-moz-transition:background-color .5s ease-out;transition:background-color .5s ease-out}.editormd-html-preview .editormd-toc-menu>.markdown-toc li,.editormd-preview-container .editormd-toc-menu>.markdown-toc li{position:relative}.editormd-html-preview .editormd-toc-menu>.markdown-toc li>ul,.editormd-preview-container .editormd-toc-menu>.markdown-toc li>ul{position:absolute;top:32px;left:10%;display:none;-webkit-box-shadow:0 3px 5px rgba(0,0,0,.2);-moz-box-shadow:0 3px 5px rgba(0,0,0,.2);-ms-box-shadow:0 3px 5px rgba(0,0,0,.2);-o-box-shadow:0 3px 5px rgba(0,0,0,.2);box-shadow:0 3px 5px rgba(0,0,0,.2)}.editormd-html-preview .editormd-toc-menu>.markdown-toc li>ul:after,.editormd-html-preview .editormd-toc-menu>.markdown-toc li>ul:before,.editormd-preview-container .editormd-toc-menu>.markdown-toc li>ul:after,.editormd-preview-container .editormd-toc-menu>.markdown-toc li>ul:before{pointer-events:pointer-events;position:absolute;left:15px;top:-6px;display:block;content:"";width:0;height:0;border:6px solid transparent;border-width:0 6px 6px;z-index:10}.editormd-html-preview .editormd-toc-menu>.markdown-toc li>ul:before,.editormd-preview-container .editormd-toc-menu>.markdown-toc li>ul:before{border-bottom-color:#ccc}.editormd-html-preview .editormd-toc-menu>.markdown-toc li>ul:after,.editormd-preview-container .editormd-toc-menu>.markdown-toc li>ul:after{border-bottom-color:#fff;top:-5px}.editormd-html-preview .editormd-toc-menu ul,.editormd-preview-container .editormd-toc-menu ul{list-style:none}.editormd-html-preview .editormd-toc-menu a,.editormd-preview-container .editormd-toc-menu a{text-decoration:none}.editormd-html-preview .editormd-toc-menu h1,.editormd-preview-container .editormd-toc-menu h1{font-size:16px;padding:5px 0 10px 10px;line-height:1;border-bottom:1px solid #eee}.editormd-html-preview .editormd-toc-menu h1 .fa,.editormd-preview-container .editormd-toc-menu h1 .fa{padding-left:10px}.editormd-html-preview .editormd-toc-menu .toc-menu-btn,.editormd-preview-container .editormd-toc-menu .toc-menu-btn{color:#666;min-width:180px;padding:5px 10px;border-radius:4px;display:inline-block;-webkit-transition:background-color .5s ease-out;-moz-transition:background-color .5s ease-out;transition:background-color .5s ease-out}.editormd-html-preview .editormd-toc-menu .toc-menu-btn .fa,.editormd-preview-container .editormd-toc-menu .toc-menu-btn .fa{float:right;padding:3px 0 0 10px;font-size:1.3em}.markdown-body .editormd-toc-menu ul{padding-left:0}.markdown-body .highlight pre,.markdown-body pre{line-height:1.6}hr.editormd-page-break{border:1px dotted #ccc;font-size:0;height:2px}@media only print{hr.editormd-page-break{background:0 0;border:none;height:0}}.editormd-html-preview textarea{display:none}.editormd-html-preview hr.editormd-page-break{background:0 0;border:none;height:0}.editormd-preview-close-btn{color:#fff;padding:4px 6px;font-size:18px;-webkit-border-radius:500px;-moz-border-radius:500px;-ms-border-radius:500px;-o-border-radius:500px;border-radius:500px;display:none;background-color:#ccc;position:absolute;top:25px;right:35px;z-index:19;-webkit-transition:background-color .3s ease-out;-moz-transition:background-color .3s ease-out;transition:background-color .3s ease-out}.editormd-preview-close-btn:hover{background-color:#999}.editormd-preview-active{width:100%;padding:40px}
+
+
+
+    </style>
+    
+</head>
+<body>
+<div id="layout">
+        <div id="sidebar">
+            <h1>Table of Contents</h1>
+            <div id="custom-toc-container">
+                <div class="toc">
+<ul>
+<li><a href="#1-06">1. 胜道宝鬘论 06</a></li>
+<li><a href="#2">2. 共修流程</a></li>
+<li><a href="#3">3. 人生十项所知之五 （法本）</a><ul>
+<li><a href="#31">3.1. 众生的苦乐由业所生，应当了知业果无欺</a></li>
+</ul>
+</li>
+<li><a href="#4-4">4. 回顾 4 项所知</a><ul>
+<li><a href="#41">4.1. 修行的重要性</a><ul>
+<li><a href="#411">4.1.1. 连接理论和行动的桥梁</a></li>
+<li><a href="#412">4.1.2. 幸福真正的来源</a></li>
+<li><a href="#413">4.1.3. 加班熬夜换来金钱到底值不值得</a></li>
+</ul>
+</li>
+<li><a href="#42">4.2. 因果不虚知道却做不到</a></li>
+<li><a href="#43">4.3. 修行的念头就像刹那的闪电</a></li>
+<li><a href="#44">4.4. 闻思修不能脱节，否则有变成“法油子”的危险</a></li>
+<li><a href="#45">4.5. 最好的学习方式</a><ul>
+<li><a href="#451">4.5.1. 闻</a></li>
+<li><a href="#452">4.5.2. 思 （思考，讨论，辩论）</a></li>
+<li><a href="#453">4.5.3. 修</a></li>
+</ul>
+</li>
+<li><a href="#46">4.6. 检验修行解脱的标准</a></li>
+<li><a href="#47">4.7. 物质的需求不要太过分，幸福的结果比获得幸福的途径更重要</a></li>
+<li><a href="#48">4.8. 过度的追求物质，反而物质的水平在下降</a></li>
+<li><a href="#49">4.9. 对自己好一点</a><ul>
+<li><a href="#491-">4.9.1. 弘扬佛法--对人类社会的非常重要的贡献</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#5">5. 众生的所有苦乐是有业所生，应当了之业果无欺</a><ul>
+<li><a href="#51">5.1. 两种情况下可以产生出离心：</a><ul>
+<li><a href="#511">5.1.1. 来自于生活的打击</a></li>
+<li><a href="#512">5.1.2. 修加行</a></li>
+<li><a href="#513">5.1.3. 佛法才是最乐观的</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+            </div>
+        </div>
+        <div id="content-container">
+            <div class="markdown-body markdown-content">
+                <p>header {
+    text-align: right;
+  }
+  p {
+    font-size: 24pt;
+    margin-bottom: 5px;
+  }
+  li {
+    font-size: 24pt;
+  }
+  section {
+    justify-content: top;
+    padding: 50px;
+  }</p>
+<hr />
+<!-- backgroundImage: "linear-gradient(to bottom, #ffcad2, #6de1ff)" -->
+
+<style scoped>
+
+</style>
+
+<h1 id="1-06">1. 胜道宝鬘论 06</h1>
+<p>堪钦慈诚罗珠仁波切讲授</p>
+<hr />
+<!-- paginate: true -->
+
+<h1 id="2">2. 共修流程</h1>
+<ul>
+<li>课前念诵</li>
+<li>每次共修共同观看 1 集上师讲解的《胜道宝鬘论》。</li>
+<li>分享讨论。每位参加共修的师兄可以分享当次学习内容中最有感触的部分，也可以提出问题供大家讨论。
+  不方便上麦的师兄可以打字分享。</li>
+<li>课后回向</li>
+</ul>
+<hr />
+<h1 id="3">3. 人生十项所知之五 （法本）</h1>
+<h2 id="31">3.1. 众生的苦乐由业所生，应当了知业果无欺</h2>
+<p>对我们普通人来说，认知善恶因果特别重要。很多人本来很善良，却因为不明事理，不知取舍，所以造罪无数。很多人因为命运造化，受到家庭、教育、社会的影响，大部分慢慢失去了天生的良知，走向了邪恶的深渊。而另一些人却变得人格越来越完善，心地越来越善良，最终变成一个大菩萨或一个好修行人。这一切的变化，都源于自己的福报因缘。</p>
+<p>我们要知道，因果规律不是人为的，只是大自然变化的一部分。世界的一切，都不是什么万能神创造的，而是万物自身的因缘产生的。</p>
+<p>尊重因果，是尊重大自然的规律，而并不是尊重释迦牟尼佛。我们最大的毛病，就是会找各种各样的理由去否定自己不知道的东西，这都是因为我们的愚昧，佛教称之为无明。因为无明，而导致了各种烦恼与痛苦。所以，即便我们不学佛，不相信佛陀，但也应该相信因果。</p>
+<hr />
+<p>如果这些最基本的要求都不重视，又何谈顿悟、证悟大圆满、即身成佛？凡夫都好高骛远，但如果失去了立足之本，一切的目标都只是空谈。</p>
+<p>当然，既然身为凡夫，必然会有各种各样的缺陷与不如法。就像按照达尔文的生物进化论，在猿猴慢慢进化为人的过程中，有一个阶段既不是人，也不完全是猴子。（不过，如今达尔文的进化论也开始遭到了质疑。）我们现在也是这样，既不是佛菩萨，也不是根本没有学佛的人，而是介于二者之间的修行人。我们有好的一面，也有不好的一面，这是很正常的情况，但起码要断除杀盗淫妄方面的严重罪业，特别是杀害其他生命的罪业。</p>
+<p>如果彻底无视因果，肆意杀戮动物，最后人类必将丧心病狂到以对待动物的方式，来对待人类自己，并冠之以各种冠冕堂皇的借口。</p>
+<p>在大自然的规律面前，所有的生命都是平等的。我们应该对自然规律心生敬畏。有毒食品、腐败贪污、世风日下等现代社会的很多问题，都是因为对自然缺乏敬畏而造成的。</p>
+<hr />
+<p>如果懂得因果，却又经不起诱惑，就需要修四个外加行当中的人身难得、死亡无常、因果不虚和轮回是苦。</p>
+<p>若能在因果取舍上慎重一点，就不会做贼心虚，就不会心怀歉疚，就可以坦坦荡荡、光明正大地过日子。即使遇到一些不公正待遇，也会从因果上找原因，而不会责怪、抱怨或仇视他人。这不是阿 Q 式的自我安慰，而是生起智慧后的明智之举。</p>
+<hr />
+<h1 id="4-4">4. 回顾 4 项所知</h1>
+<p>前三项所知是讲无常。第四项是讲无常。</p>
+<h2 id="41">4.1. 修行的重要性</h2>
+<h3 id="411">4.1.1. 连接理论和行动的桥梁</h3>
+<p>我们常常把无常的当成是永恒的
+理论上接受了无常，但是生活中却没有以无常的观念去选择，而是有常执
+这就要去修行。</p>
+<hr />
+<h3 id="412">4.1.2. 幸福真正的来源</h3>
+<p>我们认为“金钱高于一切”。
+可是为了挣钱每天熬夜加班，这个是幸福吗？
+幸福来自于追求还是获得？
+如果是追求的过程话，这个过程只是有一点点充实而已。
+拼命赚钱。得到房子之后，慢慢的满足感没有了，幸福感也就没有了。</p>
+<hr />
+<p>物质只能解决一些基本的需求。
+这个时候没有修行，对所有人来说是一个非常痛苦的事情。</p>
+<p>即使不考虑成佛，度众生。为了今生的幸福也是要修行，</p>
+<p>明天不是今天的延续。
+比如地震发生之后，昨天跟今天就是发生了巨大的变化。</p>
+<p>我们有两种观点</p>
+<ul>
+<li>嘴巴上的观点</li>
+<li>行动选择的观点</li>
+</ul>
+<p>其实应该不是这样，但是我们就是像人格分裂一样
+我们经常倒霉的时候，就是没有对无常的准备。</p>
+<p>讲无常，痛苦的话在座的可能讲的更好。</p>
+<h3 id="413">4.1.3. 加班熬夜换来金钱到底值不值得</h3>
+<p>为了生存去工作赚钱也是不得不去做的。
+那加班，熬夜，导致根本没有时间去修行，那就是很
+我们就是用自己的时间，生命，自由来进行投资。
+如果投资失败的话，就是生生世世的问题。
+最后就是一无所有。</p>
+<h2 id="42">4.2. 因果不虚知道却做不到</h2>
+<p>“善有善报恶有恶报”，理论上我们很多人都知道。
+而生活中的选择却跟不学佛的人是一样的。
+就是因为没有修行。所以必须要静下来，按照大圆满前行中的方式去修行。</p>
+<p>先去闻思修，从基础的出离心，菩提心开始。
+我们产生一个要去修出离心，菩提心的念头，这个也是多生累劫的福报的积累来的。
+在共修，学法的场合，产生这个念头不是很难。但是换一个环境的话，也许这个念头就消失了。
+这种念头，这个力量，不要让它退失。要让它把自己推动到修行的道路上。</p>
+<h2 id="43">4.3. 修行的念头就像刹那的闪电</h2>
+<ul>
+<li>《入行论》第一品 菩提心利益<blockquote>
+<p>犹于乌云暗夜中，刹那闪电极明亮，
+如是因佛威德力，世人暂萌修福意。</p>
+</blockquote>
+</li>
+</ul>
+<p>就像那乌云密布的黑夜中，刹那的闪电显得非常明亮，同样，因佛陀威德力感召，许多世人才暂时萌生了修善集福的心意。</p>
+<h2 id="44">4.4. 闻思修不能脱节，否则有变成“法油子”的危险</h2>
+<p><strong>知道的时候要马上去做。</strong></p>
+<p>有些人开始听法的时候很兴奋，听多了以后就成了常识，麻木了，没有进步
+结果就是“我知道，但是做不到”</p>
+<h2 id="45">4.5. 最好的学习方式</h2>
+<h3 id="451">4.5.1. 闻</h3>
+<p>最好的方式是看书，听光盘。
+像《慧灯之光》，光盘上（视频里）的内容会多一些，书上的内容就浓缩一些。</p>
+<h3 id="452">4.5.2. 思 （思考，讨论，辩论）</h3>
+<p>然后大家一起交流，讨论。大家一致认可。这是“闻思修”中思考的阶段。
+听过一次，再听第二次，第三次。
+佛教的书和普通的书不一样。随着学习次数的增长，理解会越来越深入。</p>
+<h3 id="453">4.5.3. 修</h3>
+<p>完全搞明白了，没有任何的疑问，这样的时候，就不要再学了。
+这个时候就去修行。</p>
+<h2 id="46">4.6. 检验修行解脱的标准</h2>
+<p>不是以学习的内容的多少，时间的长短，背诵多少法本，讲解多少佛经为标准
+而是以”贪嗔痴慢疑“有没有减少作为标准
+这个时候也许物质生活不怎么样，但精神生活非常好
+很轻松，自在，幸福
+所有的人，包括唯物论者，无神论者，也不都是在追求这个目标吗？</p>
+<h2 id="47">4.7. 物质的需求不要太过分，幸福的结果比获得幸福的途径更重要</h2>
+<p>我们最终需要的是幸福
+没有必要全世界 70 亿人用一种模式去获得幸福
+比方说米拉日巴尊者获得了幸福，虽然不是用的“我的”方法，但这个并不重要</p>
+<p>物质的要求很高的话，付出也越多，那其他领域的投入就会减少，获得也会减少
+那这些领域的重要性，比物质更加重要
+所有的物质，临终的时候都带不走
+就像乔布斯，临终的时候，财富，苹果手机是带不走的。可以带走的是自己的禅修</p>
+<h2 id="48">4.8. 过度的追求物质，反而物质的水平在下降</h2>
+<p>过去农民吃的东西，现在都是奢侈品了
+在这样下去，空气，水，都会成为奢侈品了
+要低碳环保，少欲知足，这个工作对佛教徒来说是非常适合
+工业革命，发展到了顶点，发现这样下去，人类一定会毁灭自己。
+人类的发展就是这样，向上到高峰，再向下，这样十八次。
+这就是佛教里面讲的劫，加上开始和结束，这是 20 次小劫。
+小劫再组成中劫，四个中劫组成一个大劫。</p>
+<h2 id="49">4.9. 对自己好一点</h2>
+<p>多一点时间，内心轻松，自由，这才是真正对自己好一点</p>
+<h3 id="491-">4.9.1. 弘扬佛法--对人类社会的非常重要的贡献</h3>
+<p>自己幸福
+社会和谐
+现代社会的硬广告，软广告，刺激人的欲望，任何人都不想低碳，都想要高调
+欲望是让社会发展的动力，但是发展到什么方向就不好说。
+自己要修，认认真真的修。
+否则感觉不到佛法的力量。佛法在世界上存在的价值。</p>
+<p>以上是回顾昨天的内容。</p>
+<hr />
+<h1 id="5">5. 众生的所有苦乐是有业所生，应当了之业果无欺</h1>
+<p>痛苦是出离心的来源，是我们的善知识</p>
+<h2 id="51">5.1. 两种情况下可以产生出离心：</h2>
+<h3 id="511">5.1.1. 来自于生活的打击</h3>
+<p>普通人都会讲未来永远是光明的，但是我们每个人的未来都是，头发白了，人老了，生活没办法自理，人都不存在了
+有一天真正失败了，感受到了无常，痛苦
+走投无路，看破红尘，出家了。
+这个打击是一个最好的老师。</p>
+<p>当自己去寻找痛苦，愿意去接受痛苦的时候，这个时候痛苦反而不一定是真的痛苦了
+去拒绝痛苦的时候，遇到痛苦往往是真的痛苦</p>
+<p>我们不要去拒绝痛苦，而是要去拒绝痛苦的因。
+佛法里讲“圣人怕（痛苦的）因，凡夫怕（痛苦的）果”</p>
+<p>佛教讲人生痛苦，但是一点不消极，而是去积极的解决问题。
+就像医生去治病。</p>
+<h3 id="512">5.1.2. 修加行</h3>
+<p>学习了修法以后，严格的按照姿势，修法的要求去打坐，把其他的事情放下，思考修法的内容。
+必须要做的事情，是不能拖的。要避免“拖延症”。否则修行就永远不会有进步了。
+现在自己的生命，自己的大脑，有这个能力去思考的时候，要好好珍惜。
+下一世不一定有这样的条件，这样的能力去思考。</p>
+<h3 id="513">5.1.3. 佛法才是最乐观的</h3>
+<p>十多年之后，人就消失了，是一个非常消极的人生观。
+很多人走极端的路，也是这个原因，人生没有什么意思。
+佛法就告诉我们，生命永远存在，即使是老了，还有可以追求的东西，这一世的目标可能没有必要追求了。但是还有心的目标，更积极的崇高的目标去追求。这是很乐观的。</p>
+            </div>
+        </div>
+
+        <div id="generated-at">
+        Generated at: 2021-06-13 22:07:56
+    </div>
+            
+
+        <div id="footer">
+            Powered by
+            <a href="https://github.com/menduo/mdtree" target="_blank"
+                title="https://github.com/menduo/mdtree">
+                https://github.com/menduo/mdtree
+            </a>
+        </div>
+</div>
+</body>
+
+<script>
+
+</script>
+
+
+</html>
+
