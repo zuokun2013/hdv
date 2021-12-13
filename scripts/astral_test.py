@@ -1,3 +1,5 @@
+# pip install astral
+
 from pytz import all_timezones
 from astral.sun import sun
 import datetime
