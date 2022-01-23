@@ -1,0 +1,1 @@
+wget.exe --mirror --page-requisites --adjust-extension --span-hosts -N --no-if-modified-since --convert-links -U "Mozilla/5.0 (X11; Ubuntu;Linux x86_64; rv:40.0) Gecko/20100101 Firefox/40.0" --no-check-certificate --restrict-file-names=ascii --domains huidengzhiguang.com,huidengzhiguang.net http://www.huidengzhiguang.com 
