@@ -1,13 +1,18 @@
-PS C:\tmp\sd-card> $curTStamp = (Get-Date)
-PS C:\tmp\sd-card> $fileno = 1
-PS C:\tmp\sd-card> Get-ChildItem "." -Filter *.mp3 |
->> Foreach-Object {
->>     echo "$fileno : $_"
->>     $_.CreationTime = $curTStamp
->>     $_.LastWriteTime = $curTStamp
->>     cp $_ d:
->>     $fileno = $fileno + 1
->> }
+PS C:\tmp\sd-card> 
+
+$curTStamp = (Get-Date)
+$fileno = 1
+$target = "f:"
+
+ Get-ChildItem "." -Filter *.mp3 | Foreach-Object {
+     echo "$fileno : $_"
+     $_.CreationTime = $curTStamp
+     $_.LastWriteTime = $curTStamp
+     cp $_ $target
+     $fileno = $fileno + 1
+ }
+
+
 1 : a1-上师念诵-加倍咒.mp3
 2 : a2-上师念诵-念珠加持咒.mp3
 3 : a3-上师念诵-早上醒來語加持百字明及发愿.mp3
