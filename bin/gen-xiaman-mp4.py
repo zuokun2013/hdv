@@ -1,7 +1,7 @@
 #pip install scipy
-#pip install moviepy
+# pip install scipy
 #pip install Pygame
-#choco install imagemagick -y
+#choco upgrade imagemagick -y
 
 
 import numpy as np
@@ -66,9 +66,10 @@ from pysubparser import parser
 
 allclips = []
 
-subtitles = parser.parse('C:\\tmp\\xiaman.kdenlive.srt')
+subtitles = parser.parse('C:\\tmp\\xiaman2.kdenlive.srt')
 
-for subtitle in subtitles:
+#for subtitle in subtitles:
+for index, subtitle in enumerate(subtitles, start=1):    
     print(f'{subtitle.start} > {subtitle.end}')
     print(subtitle.duration / 1000)
     print(subtitle.lines)
@@ -78,12 +79,14 @@ for subtitle in subtitles:
 
     sbtt= """
     {}
-    """.format("\n".join(subtitle.lines[0:]))
+    """.format("\n".join(subtitle.lines[0:])) + "\n(" + str(index) + ")"
+
+    
 
     print(sbtt)
 
     audioclip2 = AudioFileClip("C:\\Users\\zuoku\\Downloads\\A076-有声书《心性休息》\\《心性休息》颂词 朗诵版01.mp3").subclip(subtitle.start.isoformat(), subtitle.end.isoformat())
-    txtclip = TextClip(sbtt, color='white',
+    txtclip = TextClip(sbtt , color='white',
             font="SimHei", fontsize=40, kerning=-2,
             interline=-1, bg_color='blue', size=screensize).set_duration(audioclip2.duration)
     #txtclip.set_duration(audioclip2.duration)
@@ -91,13 +94,16 @@ for subtitle in subtitles:
 
     txtclip2 = TextClip(sbtt, color='white',
             font="SimHei", fontsize=40, kerning=-2,
-            interline=-1, bg_color='blue', size=screensize).set_duration(7)
+            interline=-1, bg_color='blue', size=screensize).set_duration(60)
     
     #fclip.preview()
     #time.sleep(9)
     allclips.append(subclip)
     allclips.append(txtclip2)
+    allclips.append(subclip)
+    allclips.append(txtclip2)
+
 
 fclip = concatenate_videoclips(allclips)
 fclip.set_fps(10)
-fclip.write_videofile('allclips.mp4',fps=10,codec='mpeg4')
+fclip.write_videofile('xiaman-allclips2.mp4',fps=10,codec='mpeg4')
