@@ -1,7 +1,7 @@
 #pip install scipy
-# pip install scipy
+#pip install moviepy
 #pip install Pygame
-#choco upgrade imagemagick -y
+#choco install imagemagick -y
 
 
 import numpy as np
