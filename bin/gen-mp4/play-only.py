@@ -15,10 +15,11 @@ root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(),
                                    root.winfo_screenheight()))
 #root.attributes('-fullscreen', True)
 root.state('zoomed')
+root.configure(bg='blue') 
 # root.wm_overrideredirect(True)
 # root.bind("<Button-1>", lambda evt: root.destroy())
 
-l = tk.Label(text='', font=("SimHei", 60), fg='blue')
+l = tk.Label(text='', font=("SimHei", 60), fg='white',bg='blue')
 l.pack(expand=True)
 
 subtitles = parser.parse('xiaman-01.kdenlive.srt')
@@ -43,7 +44,7 @@ def work():
         )
         print()
 
-        time.sleep(3)
+        time.sleep(5)
 
 
 # work function
