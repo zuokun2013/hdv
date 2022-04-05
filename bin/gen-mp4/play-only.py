@@ -23,7 +23,8 @@ l = tk.Label(text='', font=("SimHei", 60), fg='white',bg='blue')
 l.pack(expand=True)
 
 subtitles = parser.parse('xiaman-01.kdenlive.srt')
-
+total_st = len(list(subtitles))
+subtitles = parser.parse('xiaman-01.kdenlive.srt')
 
 def work():
 
@@ -35,7 +36,7 @@ def work():
 
         sbtt = """
         {}
-        """.format("\n".join(subtitle.lines[0:])) + "\n(" + str(i) + ")"
+        """.format("\n".join(subtitle.lines[0:])) + "\n(" + str(i) + "/" + str(total_st) + ")"
 
         print(sbtt.lstrip())
         l.config(text=sbtt.lstrip())
