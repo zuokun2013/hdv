@@ -22,10 +22,10 @@ root.configure(bg='blue')
 #l = tk.Label(text='', font=("STKAITI", 60), fg='white',bg='blue')
 l = tk.Label(text='', font=("STLITI", 60), fg='white',bg='blue')
 l.pack(expand=True)
-
-subtitles = parser.parse('xiaman-01.kdenlive.srt')
+dir_path = os.path.dirname(os.path.realpath(__file__)) + '\\'
+subtitles = parser.parse( dir_path +'xiaman-01.kdenlive.srt')
 total_st = len(list(subtitles))
-subtitles = parser.parse('xiaman-01.kdenlive.srt')
+subtitles = parser.parse( dir_path +'xiaman-01.kdenlive.srt')
 
 def work():
 
@@ -41,15 +41,15 @@ def work():
 
         print(sbtt.lstrip())
         l.config(text=sbtt.lstrip())
-        os.system(
-            f'ffplay -nodisp -autoexit  "ding.mp3"'
-        )
-        os.system(
-            f'ffplay -nodisp -ss {subtitle.start}  -t {subtitle.duration / 1000} -autoexit  "《心性休息》颂词 朗诵版01.mp3"'
-        )
         print()
 
-        time.sleep(5)
+        os.system(
+            f'ffplay -nodisp -autoexit "' + dir_path + 'ding.mp3"'
+        )
+        os.system(
+            f'ffplay -nodisp -ss {subtitle.start}  -t {subtitle.duration / 1000} -autoexit  "' + dir_path + '《心性休息》颂词 朗诵版01.mp3"'
+        )        
+        time.sleep(60)
 
 
 # work function
