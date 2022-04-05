@@ -42,6 +42,9 @@ def work():
         print(sbtt.lstrip())
         l.config(text=sbtt.lstrip())
         os.system(
+            f'ffplay -nodisp -autoexit  "ding.mp3"'
+        )
+        os.system(
             f'ffplay -nodisp -ss {subtitle.start}  -t {subtitle.duration / 1000} -autoexit  "《心性休息》颂词 朗诵版01.mp3"'
         )
         print()
