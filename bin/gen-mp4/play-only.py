@@ -7,8 +7,12 @@ from threading import *
 from tracemalloc import start
 
 from pysubparser import parser
+import sys
 
-start_pos = 10
+start_pos = 0
+if len(sys.argv) >= 2:
+    start_pos = int(sys.argv[1])
+
 pause_time = 60
 
 seed(42)
