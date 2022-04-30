@@ -5,6 +5,7 @@
 
 # https://pypi.org/project/pysub-parser/
 # pip install pysub-parser
+# pip install movipy
 
 import os
 import time
