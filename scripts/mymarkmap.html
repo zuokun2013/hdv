@@ -26,15 +26,21 @@
 
 <script>
   window.addEventListener("keypress", log);
-
-function log(e){
-console.log( event.type );
-if (e.key === "a")       
-  //mm.fit();
-  console.log(mm.state.data.children[1].children[2]);
-  mm.setData(mm.state.data.children[1].children[2]);
-  mm.fit();
-}
+  var mmdataroot = mm.state.data
+  function log(e) {
+    console.log(event.type);
+    if (e.key === "a") {
+      //mm.fit();
+      console.log(mm.state.data.children[1].children[2]);
+      mm.setData(mm.state.data.children[1].children[2]);
+      mm.fit();
+    } else if (e.key === "0") {
+      //mm.fit();
+      console.log(mm.state.data);
+      mm.setData(mmdataroot);
+      mm.fit();
+    }
+  }
 </script>
 </body>
 </html>
