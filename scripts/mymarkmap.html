@@ -26,14 +26,63 @@
 
 <script>
   window.addEventListener("keypress", log);
-  var mmdataroot = mm.state.data
+  var mmdataroot = mm.state.data;
+
+  var flatNodeQueue = [];
+// flatNodeQueue.push(2);         // queue is now [2]
+// flatNodeQueue.push(5);         // queue is now [2, 5]
+// var i = flatNodeQueue.shift(); // queue is now [5]
+
+  function traverse_tree(root)
+{
+     
+    // Stack to store the nodes
+    var nodes = [];
+ 
+    // Push the current node onto the stack
+    nodes.push(root);
+ 
+    // Loop while the stack is not empty
+    while (nodes.length != 0)
+    {
+         
+        // Store the current node and pop
+        // it from the stack
+        var curr = nodes.pop();
+        flatNodeQueue.push(curr);
+ 
+        // Current node has been travarsed
+        if (curr != null && curr.children != null)
+        {
+            document.write(curr.key + " ");
+ 
+            // Store all the childrent of
+            // current node from right to left.
+            for(var i = curr.children.length - 1;
+                    i >= 0; i--)
+            {
+              if (curr.children[i] != null && curr.children[i].children != null) {
+                nodes.push(curr.children[i]);
+              }
+            }
+        }
+    }
+}
+
+traverse_tree(mmdataroot);
+console.log(flatNodeQueue);
+
   function log(e) {
     console.log(event.type);
-    if (e.key === "a") {
+    if (e.key === "n") {
       //mm.fit();
-      console.log(mm.state.data.children[1].children[2]);
-      mm.setData(mm.state.data.children[1].children[2]);
-      mm.fit();
+      var currNode = flatNodeQueue.shift();
+      if(currNode != null) {
+        console.log(currNode);
+        mm.setData(currNode);
+        mm.fit();
+      }
+      
     } else if (e.key === "0") {
       //mm.fit();
       console.log(mm.state.data);
