@@ -748,10 +748,24 @@
       })
     }
 
+    const showAll = (target) => {
+      target.payload = {
+        ...target.payload,
+        fold: false,
+      }
+
+      target.children?.forEach((t) => {
+        showAll(t)
+      })
+    }
+
     function renderMMNodeWithPath() {
       hideAll(mmdataroot);
 
       // var currNode = flatNodeQueue.shift();
+      console.log('---------------- renderMMNodeWithPath -------------')
+      console.log(flatNodeQueuePos);
+      console.log(flatNodeQueue);
       var currNode = flatNodeQueue[flatNodeQueuePos];
 
       // if(flatNodeQueuePos>0) {
@@ -789,7 +803,7 @@
     console.log(mmNodeMap);
 
     function log(e) {
-      console.log(event.type);
+      console.log(e.key);
       if (e.key === "j" && flatNodeQueuePos > 1) {
         // var testNode = mmdataroot.children[1].children[2];
         // console.log(testNode);
@@ -804,15 +818,26 @@
       } else if (e.key === "k" && flatNodeQueuePos < flatNodeQueue.length) {
         flatNodeQueuePos++;
         renderMMNodeWithPath();
+      } else if (e.key === "h" ) {
+        flatNodeQueuePos=0;
+        renderMMNodeWithPath();
+      } else if (e.key === "l" ) {
+        flatNodeQueuePos = flatNodeQueue.length - 1;
+        renderMMNodeWithPath();
 
       } else if (e.key === "0") {
         //mm.fit();
         console.log(mm.state.data);
         flatNodeQueuePos = 0;
-        mm.setData(mmdataroot);
+        showAll(mmdataroot);
+        mm.renderData();
         mm.fit();
       } else if (e.key === "d") {
         console.log(mm);
+      } else if (e.key === "=") {
+        mm.rescale(1.25);
+      } else if (e.key === "-") {
+        mm.rescale(0.8);
       } else if (e.key === "f") {
         mm.fit();
       }
