@@ -126,7 +126,7 @@ console.log(mmNodeMap);
 
   function log(e) {
     console.log(event.type);
-    if (e.key === "j") {
+    if (e.key === "j" && flatNodeQueuePos > 1) {
       // var testNode = mmdataroot.children[1].children[2];
       // console.log(testNode);
 
@@ -137,17 +137,20 @@ console.log(mmNodeMap);
       flatNodeQueuePos--;        
       renderMMNodeWithPath();
       
-    } else if (e.key === "k") {      
-      renderMMNodeWithPath();
-      flatNodeQueuePos++;      
+    } else if (e.key === "k" && flatNodeQueuePos < flatNodeQueue.length) {    
+      flatNodeQueuePos++;       
+      renderMMNodeWithPath();       
 
     } else if (e.key === "0") {
       //mm.fit();
       console.log(mm.state.data);
+      flatNodeQueuePos = 0;
       mm.setData(mmdataroot);
       mm.fit();
     } else if (e.key === "d") {
       console.log(mm);
+    }  else if (e.key === "f") {
+      mm.fit();
     }
   }
 </script>
