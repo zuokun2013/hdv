@@ -26,9 +26,11 @@
 
 <script>
   window.addEventListener("keypress", log);
-  var mmdataroot = mm.state.data;
 
+  var mmdataroot = mm.state.data;
   var flatNodeQueue = [];
+  var flatNodeQueuePos = 0;
+  let mmNodeMap = new Map();
 // flatNodeQueue.push(2);         // queue is now [2]
 // flatNodeQueue.push(5);         // queue is now [2, 5]
 // var i = flatNodeQueue.shift(); // queue is now [5]
@@ -50,6 +52,8 @@
         // it from the stack
         var curr = nodes.pop();
         flatNodeQueue.push(curr);
+        mmNodeMap.set(curr.state.id.toString(), curr);
+        curr.payload.fold = true;
  
         // Current node has been travarsed
         if (curr != null && curr.children != null)
@@ -69,25 +73,81 @@
     }
 }
 
+const hideAll = (target) => {
+  target.payload = {
+    ...target.payload,
+    fold: true,
+  }
+
+  target.children?.forEach((t) => {
+    hideAll(t)
+  })
+}
+
+function renderMMNodeWithPath() {
+  hideAll(mmdataroot);
+
+  // var currNode = flatNodeQueue.shift();
+  var currNode = flatNodeQueue[flatNodeQueuePos];
+
+  // if(flatNodeQueuePos>0) {
+  // }
+  if(currNode != null) {
+    console.log(currNode);
+    console.log(currNode.state.path);
+    const currPath = currNode.state.path.split(".");
+    currPath.forEach(element => {
+      console.log(element);
+      console.log(mmNodeMap.get(element));
+      mmNodeMap.get(element).payload.fold = false;
+    });
+    // mm.setData(currNode);
+
+    if(flatNodeQueuePos > 2) {
+      flatNodeQueue[flatNodeQueuePos-1].payload.fold = false;
+      flatNodeQueue[flatNodeQueuePos-2].payload.fold = false;
+    }
+    if(flatNodeQueuePos < flatNodeQueue.length - 2) {
+      flatNodeQueue[flatNodeQueuePos+1].payload.fold = false;
+      flatNodeQueue[flatNodeQueuePos+2].payload.fold = false;
+    }
+
+    mm.renderData();
+    mm.fit();
+  }
+}
+
 traverse_tree(mmdataroot);
+mmdataroot.payload.fold = false;
+mm.renderData();
+mm.fit();
 console.log(flatNodeQueue);
+console.log(mmNodeMap);
 
   function log(e) {
     console.log(event.type);
-    if (e.key === "n") {
-      //mm.fit();
-      var currNode = flatNodeQueue.shift();
-      if(currNode != null) {
-        console.log(currNode);
-        mm.setData(currNode);
-        mm.fit();
-      }
+    if (e.key === "j") {
+      // var testNode = mmdataroot.children[1].children[2];
+      // console.log(testNode);
+
+      // testNode.payload.fold = !((testNode.payload) != null && testNode.payload.fold)
+      // mm.renderData();
+      // mm.fit();
       
+      flatNodeQueuePos--;        
+      renderMMNodeWithPath();
+      
+    } else if (e.key === "k") {      
+      renderMMNodeWithPath();
+      flatNodeQueuePos++;      
+
     } else if (e.key === "0") {
       //mm.fit();
       console.log(mm.state.data);
       mm.setData(mmdataroot);
       mm.fit();
+    } else if (e.key === "d") {
+      console.log(mm);
     }
   }
 </script>
