@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Markmap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #mindmap {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+  <script src="./mmlib.js"></script>
+</head>
+
+<body>
+  <svg id="mindmap"></svg>
+  <script src="d3_6.7.0.js"></script>
+  <script src="./mmview.js"></script>
+  <script>
+    
+    var markdown = `
+# 第一品  - 暇满难得 （分四）
+  - 甲一、总说暇满难得（分二）；
+    - 乙一、略说暇满难得
+      - 友等暇满宝藏身，六趣之中极难得，
+      - 犹如盲人获宝藏，当以极喜修利乐。 
+    - 乙二、广说暇满难得（分八）：
+      - 丙一、宣说十八暇满：
+        - 何为闲暇与圆满？吾者未生三恶趣，
+        - 边鄙邪见长寿天，佛不出世及喑哑，远离一切八无暇。 
+        - 为人根足生中土，业际无倒信佛法，具足殊胜五自圆。
+        - 值佛出世与说法，正法住世入佛门，
+        - 善师慈摄五他圆，即是十八种暇满。
+        - 自己具全之此时，当诚精勤修解脱。
+      - 丙二、虽得暇满然无可信之理： 
+        - 倘若此生未修利，后世不闻善趣声，
+        - 业力所牵堕恶趣，长久流转于其中， 
+        - 不知取舍入邪道，漂于无边轮回中。
+      - 丙三、劝勉勤于正法： 
+        - 故今具有自在时，以随善道之缘起，
+        - 当依无尽善二资，超越三有之城邑。
+      - 丙四、今当精进之理：
+        - 获宝舟时若未渡，无边轮回此大海， 
+        - 永久于惑苦涛中，受逼迫时我何行？ 
+      - 丙五、暇满难得之理： 
+        - 故速披上精进甲，为除心与心所染，
+        - 踏上净智光明道，菩提道中不间断。
+      - 丙六、今若不勤则受轮回之苦：
+        - 今得圆满法根本，无垢珍宝之法器，
+        - 不容清凉法甘霖，受轮回苦毁自己。
+      - 丙七、暇满为诸法之依处：
+        - 大乐利乐云聚中，所降妙智甘露雨，
+        - 流入人身净心田，故当喜悦诚行法。
+      - 丙八、以比喻说明暇满难得：
+        - 人天导师佛陀说，犹如盲龟颈恰入，
+        - 漂于海中木轭孔，人身较此更难得，
+        - 暇满宝身何堪言？是故今起当精进。
+  - 甲二、认识暇满之自性（分二）：
+    - 乙一、总说：
+      - 如是人分相似身，中等身及珍宝身。
+    - 乙二、别说（分六）：
+      - 丙一、宣说相似人身：
+        - 不知善恶行非法，根虽具足相似身，
+        - 纵然转生于中土，亦为边鄙野蛮性。
+      - 丙二、宣说中等人身：
+        - 佛说未入正法道，颠倒善恶贪今生，
+        - 散于愦闹外境中，蛮横放荡弃后世，
+        - 不求解脱虽闻法，非殊胜身中等性，
+        - 偶尔心向微善法，多时罪蒙慧眼故，
+        - 持相自他有何利？彼等在家或出家，
+        - 稍许胜过恶趣众，是故称为中等身。
+      - 丙三、宣说珍宝人身：
+        - 佛说无垢之法器，最为殊胜之正士，
+        - 自在闻思精华义，调己劝他行善法，
+        - 修行山王极稳固，彼等仙人胜幢相，
+        - 无论在家或出家，即是珍宝之人身。 
+      - 丙四、当思正法之理由：
+        - 故于大德前闻法，如法修持住正法，
+        - 恒常行法止非法，以修法义而住法。
+      - 丙五、如是思维之功德：
+        - 不久越过三有海，速至寂洲得涅槃。 
+      - 丙六、于业地修法具大义：
+        - 何者转生为人时，倘若不勤修善法， 
+        - 则无比其智劣者，如自宝洲空手返， 
+        - 无义虚度暇满身，故当恒修寂灭法。
+  - 甲三、明确观察能依所依之自性（分六）：
+    - 乙一、法之根本为心：
+      - 诸法依赖于自心，心依暇满即缘起，
+      - 种种因缘聚合时，当调自心诸法根。
+    - 乙二、应当日夜精勤修法： 
+      - 死亡恐怖生无边，贫穷痛苦如雨下，
+      - 皆从虚度暇满生，故增上生定胜法，
+      - 由思暇满难得生，昼夜喜悦速勤修。
+    - 乙三、宣说功德令生欢喜： 
+      - 此说暇满之功德：面见导师具实义，
+      - 闻修正法亦具义，今生具义来世果，
+      - 皆自暇满人身生，故当数数生欢喜。
+    - 乙四、成办超人善妙之理：
+      - 天等世间众生主，声缘佛子中怙主，
+      - 获得无死甘露位，亦从胜宝人身生，
+      - 故赞暇满胜天身，已获人身当生喜。
+    - 乙五、暇满为诸乘之所依： 
+      - 人天之中人易得，无念见谛智慧地，
+      - 获得人身易成就，深藏金刚乘道果，
+      - 故说殊胜暇满身，乃为诸乘法所依。
+    - 乙六、观修难得之方法：
+      - 犹如穷人获胜宝，怀疑畏恐是梦境，
+      - 应当欣喜思暇满，成就现后利乐法。
+  - 甲四、回向本品善根： 
+    - 以此妙音甘露语，愿息众生之散乱，
+    - 赴往林中断烦恼，疲劳心性今休息。
+
+`;
+
+    let transformer = new markmap.Transformer();
+    const { root, features } = transformer.transform(markdown);
+    console.log(root);
+    
+  </script>
+
+  <script>((w, x, k, M) => { const _ = w(); window.mm = _.Markmap.create("svg#mindmap", x == null ? void 0 : x(_, M), k) })(() => window.markmap, (e, t) => e.deriveOptions(t), root, { "color": null, "maxWidth": 300 })</script>
+  <script>
+    window.addEventListener("keypress", log);
+
+    var mmdataroot = mm.state.data;
+    var flatNodeQueue = [];
+    var flatNodeQueuePos = 0;
+    let mmNodeMap = new Map();
+    // flatNodeQueue.push(2);         // queue is now [2]
+    // flatNodeQueue.push(5);         // queue is now [2, 5]
+    // var i = flatNodeQueue.shift(); // queue is now [5]
+
+    function traverse_tree(root) {
+
+      // Stack to store the nodes
+      var nodes = [];
+
+      // Push the current node onto the stack
+      nodes.push(root);
+
+      // Loop while the stack is not empty
+      while (nodes.length != 0) {
+
+        // Store the current node and pop
+        // it from the stack
+        var curr = nodes.pop();
+        flatNodeQueue.push(curr);
+        mmNodeMap.set(curr.state.id.toString(), curr);
+        curr.payload.fold = true;
+
+        // Current node has been travarsed
+        if (curr != null && curr.children != null) {
+          document.write(curr.key + " ");
+
+          // Store all the childrent of
+          // current node from right to left.
+          for (var i = curr.children.length - 1;
+            i >= 0; i--) {
+            if (curr.children[i] != null && curr.children[i].children != null) {
+              nodes.push(curr.children[i]);
+            }
+          }
+        }
+      }
+    }
+
+    const hideAll = (target) => {
+      target.payload = {
+        ...target.payload,
+        fold: true,
+      }
+
+      target.children?.forEach((t) => {
+        hideAll(t)
+      })
+    }
+
+    const showAll = (target) => {
+      target.payload = {
+        ...target.payload,
+        fold: false,
+      }
+
+      target.children?.forEach((t) => {
+        showAll(t)
+      })
+    }
+
+    function renderMMNodeWithPath() {
+      hideAll(mmdataroot);
+
+      // var currNode = flatNodeQueue.shift();
+      console.log('---------------- renderMMNodeWithPath -------------')
+      console.log(flatNodeQueuePos);
+      console.log(flatNodeQueue);
+      var currNode = flatNodeQueue[flatNodeQueuePos];
+
+      // if(flatNodeQueuePos>0) {
+      // }
+      if (currNode != null) {
+        console.log(currNode);
+        console.log(currNode.state.path);
+        const currPath = currNode.state.path.split(".");
+        currPath.forEach(element => {
+          console.log(element);
+          console.log(mmNodeMap.get(element));
+          mmNodeMap.get(element).payload.fold = false;
+        });
+        // mm.setData(currNode);
+
+        if (flatNodeQueuePos > 2) {
+          flatNodeQueue[flatNodeQueuePos - 1].payload.fold = false;
+          flatNodeQueue[flatNodeQueuePos - 2].payload.fold = false;
+        }
+        if (flatNodeQueuePos < flatNodeQueue.length - 2) {
+          flatNodeQueue[flatNodeQueuePos + 1].payload.fold = false;
+          flatNodeQueue[flatNodeQueuePos + 2].payload.fold = false;
+        }
+
+        mm.renderData();
+        mm.fit();
+      }
+    }
+
+    traverse_tree(mmdataroot);
+    mmdataroot.payload.fold = false;
+    mm.renderData();
+    mm.fit();
+    console.log(flatNodeQueue);
+    console.log(mmNodeMap);
+
+    function log(e) {
+      console.log(e.key);
+      if (e.key === "j" && flatNodeQueuePos > 1) {
+        // var testNode = mmdataroot.children[1].children[2];
+        // console.log(testNode);
+
+        // testNode.payload.fold = !((testNode.payload) != null && testNode.payload.fold)
+        // mm.renderData();
+        // mm.fit();
+
+        flatNodeQueuePos--;
+        renderMMNodeWithPath();
+
+      } else if (e.key === "k" && flatNodeQueuePos < flatNodeQueue.length) {
+        flatNodeQueuePos++;
+        renderMMNodeWithPath();
+      } else if (e.key === "h" ) {
+        flatNodeQueuePos=0;
+        renderMMNodeWithPath();
+      } else if (e.key === "l" ) {
+        flatNodeQueuePos = flatNodeQueue.length - 1;
+        renderMMNodeWithPath();
+
+      } else if (e.key === "0") {
+        //mm.fit();
+        console.log(mm.state.data);
+        flatNodeQueuePos = 0;
+        showAll(mmdataroot);
+        mm.renderData();
+        mm.fit();
+      } else if (e.key === "d") {
+        console.log(mm);
+      } else if (e.key === "=") {
+        mm.rescale(1.25);
+      } else if (e.key === "-") {
+        mm.rescale(0.8);
+      } else if (e.key === "f") {
+        mm.fit();
+      }
+    }
+  </script>
+</body>
+
+</html>
