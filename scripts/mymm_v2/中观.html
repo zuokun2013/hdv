@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Markmap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #mindmap {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+  <script src="./mmlib.js"></script>
+</head>
+
+<body>
+  <svg id="mindmap"></svg>
+  <script src="d3_6.7.0.js"></script>
+  <script src="./mmview.js"></script>
+  <script>
+    
+    var markdown = `
+	# 中观四大因
+
+## 观察因--金刚屑因（破四边生）
+
+- 如同金刚杵将其邪见的山击得粉碎，
+  化成了极细微的碎屑，故以此比喻而得名。
+
+### 破自生
+
+- 在外道中，有“自生”的观点，他们的依据是一个比喻：
+  从太阳落山到第二天天明之前，虽然看不见太阳，
+  但是，不是太阳不存在，太阳是存在的。
+  他们认为：同样，在稻芽没有产生之前，
+  仅仅是看不见稻芽而已，实际上它也是存在的。
+  这是部分外道的观点，常人不这么认为，故也无须特别去破。
+
+### 破他生
+
+#### 因果同时存在
+
+- 既然因存在的时候果（自己）已经成立了，
+  因还须对果起什么作用吗？实际上，这个因是没有用的。
+  不过，很少有人觉得因果是同时存在的。
+
+#### 因果不同时存在
+
+- 在果根本不存在的情况下，因又能影响谁、作用谁呢？
+  前后的两个物质不可能在一个时空中同时存在，
+  既然不能在同一时空相遇，它们之间又怎么会产生因果关系呢？
+  这是绝对不可能的。
+
+### 破共生
+
+- “自生”不成立，“他生”也不成立，那么“自他共生”更不成立
+
+### 破无因生
+
+- 认为万法无因生的观点，不要说是学过宗派的人，
+  即便是普通的农民也不会承认。（入行论广解）
+
+## 观察果--破有无生因
+
+- 跟破他生的思维模式类似
+  虽然有事宗和世间凡夫都承许果由因生，
+  但如果以胜义理论善加观察，则会了知“生不成立”，其根据如下：
+- 若是果已有而生，
+  - 如遮破自生时所说，不能成立；
+- 如果果前无后生，
+  - 比如认为“现在除了种子没有其它，到秋季时会长出过去没有的庄稼”，这一想法也不成立，
+    因为：要以因产生果，必定要对果作一种作业，
+    如果对果什么也没有作，那“以因生果”的名称和意义，都不可能存在。
+    因对果作业，只有“因果同时”和“因先果后”两种情况，以下分别破斥
+  - 一、因果同时不合理
+    因为：没成立果的期间，因也不成立，故没有任何作能生的作者；
+    而因成立之时，果也已经成立，不必要对果作任何产生的作业。
+  - 二、因先果后不合理
+    在因具有自性时，果尚未成立的缘故，何处也没有，
+    对这样的无者，因也作不到能生的作业，因为“无”的法不会成为任何利益和损害的依处，
+    “因”、“果”彼此也没有接触，毕竟只是无关系而已。
+    如是善加观察，虽然因对果没作到任何作业，
+    但有如是因的显现，就生起如是果的显现，
+    除了这一点之外，以其它根据再怎么观察也不可得，
+    只是对此安立一个“缘起生”的名字而已。
+
+## 观察本体--离一多因
+
+- 一不成立，则多不成立。多不成立，一则不成立。
+
+  - 例如：粗大的色法是由微尘组成，
+    如果将微尘抉择为空性，则粗大的色法也就抉择为了空性。反之亦然。
+
+- 如何将微尘抉择为空性呢？
+  - 答：《量理讲记》：“《中观庄严论》的抉择方式为：
+    中间的无分微尘，有没有朝向东西等方向？如果有六个方向，它就不是无分微尘了；
+    如果没有分（意味着没有体积），那有多少个微尘积聚在一起，实际上也不能积聚成粗大的法。”
+    这样，通过抉择无法微尘空性，就抉择了了由其构成的粗大色法的空性。
+    这就是中观的离一多因。
+- 如何将无分刹那抉择为空性呢？
+  - 答：我们承许之无分刹那如果有一个时段，则有 A 和 B 两端，
+    如果这个无分刹那的 A 端和 B 端接触，则 A 端和 B 端之间没有间隔，
+    则 A 与 B 合二为一，成为一体，
+    这样，就有一个大劫成为的一刹那，无分构成心识的相续。
+    如果 A 端和 B 端不接触，则一个无分微尘有了 A 部分和 B 部分，
+    A 端和前一无分刹那的 Z 端接触，B 端和后一个无分刹那的 C 端接触，
+    这样，A 不是 B，一个无分微尘已经分成了两个可以分割的部分，怎么还是无分微尘呢，应成有分微尘了。
+
+## 观察一切--大缘起因
+
+- （一）一切有为、无为法的自性，
+  都是观待因缘，
+  或者依他而假立，
+  无有一法不观待因缘
+  ”此有故彼有，此生故彼生“
+
+  - 在必须观待因缘才显现的万法当中，绝对没有一个法有自性。
+    假如自性是从众缘中产生，那就成了由他法作成，
+    这样“自性”就成了所作的法。然而所作和自性相违。
+    “自性”是指不必观待其他因缘，有自己独立的体性。
+    这样应当一直保持它的体性，而不会消失。
+    世间任何一个法都是观待因缘而产生的。
+    比如房间里的任何一件家具、电器、用品，乃至自己这个人，都是由因缘和合而生。
+
+- （二）若以自性成立，
+  还需观待因缘，
+  则成自许相违
+
+  - 在必须观待因缘才显现的万法当中，绝对没有一个法有自性。
+    假如自性是从众缘中产生，那就成了由他法作成，这样“自性”就成了所作的法。
+    然而所作和自性相违。“自性”是指不必观待其他因缘，有自己独立的体性。
+    这样应当一直保持它的体性，而不会消失。
+    世间任何一个法都是观待因缘而产生的。所以这是众多因缘和合而幻现的，并没有自性。完全是空性。
+`;
+
+    let transformer = new markmap.Transformer();
+    const { root, features } = transformer.transform(markdown);
+    console.log(root);
+    
+  </script>
+
+  <script>((w, x, k, M) => { const _ = w(); window.mm = _.Markmap.create("svg#mindmap", x == null ? void 0 : x(_, M), k) })(() => window.markmap, (e, t) => e.deriveOptions(t), root, { "color": null, "maxWidth": 300 })</script>
+  <script>
+    window.addEventListener("keypress", log);
+
+    var mmdataroot = mm.state.data;
+    var flatNodeQueue = [];
+    var flatNodeQueuePos = 0;
+    let mmNodeMap = new Map();
+    // flatNodeQueue.push(2);         // queue is now [2]
+    // flatNodeQueue.push(5);         // queue is now [2, 5]
+    // var i = flatNodeQueue.shift(); // queue is now [5]
+
+    function traverse_tree(root) {
+
+      // Stack to store the nodes
+      var nodes = [];
+
+      // Push the current node onto the stack
+      nodes.push(root);
+
+      // Loop while the stack is not empty
+      while (nodes.length != 0) {
+
+        // Store the current node and pop
+        // it from the stack
+        var curr = nodes.pop();
+        flatNodeQueue.push(curr);
+        mmNodeMap.set(curr.state.id.toString(), curr);
+        curr.payload.fold = true;
+
+        // Current node has been travarsed
+        if (curr != null && curr.children != null) {
+          document.write(curr.key + " ");
+
+          // Store all the childrent of
+          // current node from right to left.
+          for (var i = curr.children.length - 1;
+            i >= 0; i--) {
+            if (curr.children[i] != null && curr.children[i].children != null) {
+              nodes.push(curr.children[i]);
+            }
+          }
+        }
+      }
+    }
+
+    const hideAll = (target) => {
+      target.payload = {
+        ...target.payload,
+        fold: true,
+      }
+
+      target.children?.forEach((t) => {
+        hideAll(t)
+      })
+    }
+
+    const showAll = (target) => {
+      target.payload = {
+        ...target.payload,
+        fold: false,
+      }
+
+      target.children?.forEach((t) => {
+        showAll(t)
+      })
+    }
+
+    function renderMMNodeWithPath() {
+      hideAll(mmdataroot);
+
+      // var currNode = flatNodeQueue.shift();
+      console.log('---------------- renderMMNodeWithPath -------------')
+      console.log(flatNodeQueuePos);
+      console.log(flatNodeQueue);
+      var currNode = flatNodeQueue[flatNodeQueuePos];
+
+      // if(flatNodeQueuePos>0) {
+      // }
+      if (currNode != null) {
+        console.log(currNode);
+        console.log(currNode.state.path);
+        const currPath = currNode.state.path.split(".");
+        currPath.forEach(element => {
+          console.log(element);
+          console.log(mmNodeMap.get(element));
+          mmNodeMap.get(element).payload.fold = false;
+        });
+        // mm.setData(currNode);
+
+        if (flatNodeQueuePos > 2) {
+          flatNodeQueue[flatNodeQueuePos - 1].payload.fold = false;
+          flatNodeQueue[flatNodeQueuePos - 2].payload.fold = false;
+        }
+        if (flatNodeQueuePos < flatNodeQueue.length - 2) {
+          flatNodeQueue[flatNodeQueuePos + 1].payload.fold = false;
+          flatNodeQueue[flatNodeQueuePos + 2].payload.fold = false;
+        }
+
+        mm.renderData();
+        mm.fit();
+      }
+    }
+
+    traverse_tree(mmdataroot);
+    mmdataroot.payload.fold = false;
+    mm.renderData();
+    mm.fit();
+    console.log(flatNodeQueue);
+    console.log(mmNodeMap);
+
+    function log(e) {
+      console.log(e.key);
+      if (e.key === "j" && flatNodeQueuePos > 1) {
+        // var testNode = mmdataroot.children[1].children[2];
+        // console.log(testNode);
+
+        // testNode.payload.fold = !((testNode.payload) != null && testNode.payload.fold)
+        // mm.renderData();
+        // mm.fit();
+
+        flatNodeQueuePos--;
+        renderMMNodeWithPath();
+
+      } else if (e.key === "k" && flatNodeQueuePos < flatNodeQueue.length) {
+        flatNodeQueuePos++;
+        renderMMNodeWithPath();
+      } else if (e.key === "h" ) {
+        flatNodeQueuePos=0;
+        renderMMNodeWithPath();
+      } else if (e.key === "l" ) {
+        flatNodeQueuePos = flatNodeQueue.length - 1;
+        renderMMNodeWithPath();
+
+      } else if (e.key === "0") {
+        //mm.fit();
+        console.log(mm.state.data);
+        flatNodeQueuePos = 0;
+        showAll(mmdataroot);
+        mm.renderData();
+        mm.fit();
+      } else if (e.key === "d") {
+        console.log(mm);
+      } else if (e.key === "=") {
+        mm.rescale(1.25);
+      } else if (e.key === "-") {
+        mm.rescale(0.8);
+      } else if (e.key === "f") {
+        mm.fit();
+      }
+    }
+  </script>
+</body>
+
+</html>

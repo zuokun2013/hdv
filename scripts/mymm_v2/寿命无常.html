@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Markmap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #mindmap {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+  <script src="./mmlib.js"></script>
+</head>
+
+<body>
+  <svg id="mindmap"></svg>
+  <script src="d3_6.7.0.js"></script>
+  <script src="./mmview.js"></script>
+  <script>
+    
+    var markdown = `
+- 第二品 - 寿命无常 （分五）
+  - 甲一、略说：
+    - 如是虽获难得身，然为刹那无常性，
+    - 若详观察无实质，犹如水泡不可靠，
+    - 是故日日夜夜中，恒常思维定死亡。
+  - 甲二、广说（分十三）：
+    - 乙一、所爱之身亦是无常：
+      - 此身一切痛苦根，深重烦恼之来源，
+      - 虽着衣饰花鬘等，美味佳肴供奉之，
+      - 然终无常毁坏离，为鹰狐狸豺狼食，
+      - 舍此爱净常执心，当自今起修妙法。
+    - 乙二、得梵天果亦是无常：
+      - 三界圆满善妙主，梵天乐生千眼等，
+      - 声誉福德威光灿，亦无胜过死主时。
+      - 纵成禅定住数劫，业尽之际必死亡，
+      - 一切天人阿修罗，成就之士持明者，
+      - 人间君主平凡众，皆畏死亡生无边。
+    - 乙三、乃变化性故为无常：
+      - 今生无常乌云中，死主跳动闪电舞，
+      - 昼夜诸时降变雨，淋湿三地诸苗芽。
+    - 乙四、器情世界皆为无常：
+      - 器情无常世成坏，七火一水风毁时，
+      - 大海洲山所围绕，四宝山王亦无常，
+      - 当思一切定有成，一虚空时诚修法。
+    - 乙五、以诸佛佛子示现涅槃而说无常：
+      - 缘觉弟众佛子中，引导世间诸怙主，
+      - 宛如晴空中皓月，为诸星鬘所环绕，
+      - 巍然朗然坦然现，亦示无常涅槃相，
+      - 无量教法珍宝日，亦渐隐没当观此。
+      - 犹如无实芭蕉树，幻室自身何不灭？
+    - 乙六、以无增唯减而说无常：
+      - 故定死亡然死期，死处死缘皆不定，
+      - 此寿无增恒衰减，死缘众多生缘微，
+      - 时不待我当紧迫，自即日起勤修法。
+    - 乙七、外内皆为无常：
+      - 四大聚合之心室，虽为动念士所饰，
+      - 亦由因缘所产生，乃坏灭性有为法，
+      - 犹如旧城无常有，故当迅速修正法。
+    - 乙八、以比喻说明无常：
+      - 犹如赤风中油灯，刹那无常动摇性，
+      - 骤然猛烈之死缘，降临自己头上时，
+      - 不能久住定死亡，故应当下修正法。
+    - 乙九、终舍一切故为无常：
+      - 眷属受用与亲友，美貌韶华财种姓，
+      - 皆需弃舍独自亡，无助益者随善恶，
+      - 尔时依处唯正法，为何今不勤修持？
+    - 乙十、三世均为无常：
+      - 思维世间前后代，先前无量人已逝，
+      - 如今人间多数众，百年之内定死亡。
+      - 未来一切亦复然，且观老幼同辈去，
+      - 吾亦不离此性故，当思定死而修法。
+    - 乙十一、三有皆是无常：
+      - 三界地狱至有顶，无一胜过死主者，
+      - 悉皆无常无实质，不可依靠如车轮。
+      - 尤其人世多损害，成多病魔之祸源，
+      - 兵刃火灾险地毒，猛兽国王与怨敌，
+      - 以及盗贼土匪等，摧毁生命坏圆满。
+    - 乙十二、刹那亦无常：
+      - 纵然无有诸损害，士夫寿命亦流逝，
+      - 昼夜刹那皆变化，逐渐靠近死主域，
+      - 犹如江河汇于海，或似日落于西山。
+    - 乙十三、诸缘时境皆无常：
+      - 食等生缘虽圆满，尚有如毒生苦时，
+      - 数多逆缘之危害，岂能不灭诸圆满？
+      - 是故无不成死缘，死亡处缘期不定，
+      - 当弃无义欺世法，诚修死亡无常法。
+  - 甲三、劝勉精进（分三）：
+    - 乙一、具足上师窍诀时当修法：
+      - 此时吾得暇满舟，正具上师窍诀桨，
+      - 若不精勤渡苦海，更无较此愚痴者。
+    - 乙二、若不精勤则不得解脱：
+      - 何故佛赞珍宝器，净除诸过获正义，
+      - 若不成办自他利，则自束缚轮回狱。
+    - 乙三、于不听善妙教诲者生悲心：
+      - 呜呼如同教诲石，思多世人增厌离，
+      - 开示不悟讲不解，明日死亡今执常，
+      - 贪著轮回无厌心，明知我慢明懂迷，
+      - 愦闹散乱降惑雨，何时我利此等众？
+  - 甲四、结行（分二）：
+    - 乙一、欲越轮回者当观无常之理：
+      - 于此奉劝欲度过，过患轮回之苦海，
+      - 成就稀有妙德者，即日思维定死亡，
+      - 昼夜唯观修无常，反复生厌出离心。
+    - 乙二、宣说功德：
+      - 彼成现后利乐法，勇猛精进而修持，
+      - 舍今世断我执迷，总之成就诸妙德，
+      - 拔出诸过解脱因，急修法根本无常。
+  - 甲五、回向本品善根：
+    - 如是法理苍鸣声，发出深益教妙音，
+    - 愿众散乱执常惑，疲劳心性今休息。
+`;
+
+    let transformer = new markmap.Transformer();
+    const { root, features } = transformer.transform(markdown);
+    console.log(root);
+    
+  </script>
+
+  <script>((w, x, k, M) => { const _ = w(); window.mm = _.Markmap.create("svg#mindmap", x == null ? void 0 : x(_, M), k) })(() => window.markmap, (e, t) => e.deriveOptions(t), root, { "color": null, "maxWidth": 300 })</script>
+  <script>
+    window.addEventListener("keypress", log);
+
+    var mmdataroot = mm.state.data;
+    var flatNodeQueue = [];
+    var flatNodeQueuePos = 0;
+    let mmNodeMap = new Map();
+    // flatNodeQueue.push(2);         // queue is now [2]
+    // flatNodeQueue.push(5);         // queue is now [2, 5]
+    // var i = flatNodeQueue.shift(); // queue is now [5]
+
+    function traverse_tree(root) {
+
+      // Stack to store the nodes
+      var nodes = [];
+
+      // Push the current node onto the stack
+      nodes.push(root);
+
+      // Loop while the stack is not empty
+      while (nodes.length != 0) {
+
+        // Store the current node and pop
+        // it from the stack
+        var curr = nodes.pop();
+        flatNodeQueue.push(curr);
+        mmNodeMap.set(curr.state.id.toString(), curr);
+        curr.payload.fold = true;
+
+        // Current node has been travarsed
+        if (curr != null && curr.children != null) {
+          document.write(curr.key + " ");
+
+          // Store all the childrent of
+          // current node from right to left.
+          for (var i = curr.children.length - 1;
+            i >= 0; i--) {
+            if (curr.children[i] != null && curr.children[i].children != null) {
+              nodes.push(curr.children[i]);
+            }
+          }
+        }
+      }
+    }
+
+    const hideAll = (target) => {
+      target.payload = {
+        ...target.payload,
+        fold: true,
+      }
+
+      target.children?.forEach((t) => {
+        hideAll(t)
+      })
+    }
+
+    const showAll = (target) => {
+      target.payload = {
+        ...target.payload,
+        fold: false,
+      }
+
+      target.children?.forEach((t) => {
+        showAll(t)
+      })
+    }
+
+    function renderMMNodeWithPath() {
+      hideAll(mmdataroot);
+
+      // var currNode = flatNodeQueue.shift();
+      console.log('---------------- renderMMNodeWithPath -------------')
+      console.log(flatNodeQueuePos);
+      console.log(flatNodeQueue);
+      var currNode = flatNodeQueue[flatNodeQueuePos];
+
+      // if(flatNodeQueuePos>0) {
+      // }
+      if (currNode != null) {
+        console.log(currNode);
+        console.log(currNode.state.path);
+        const currPath = currNode.state.path.split(".");
+        currPath.forEach(element => {
+          console.log(element);
+          console.log(mmNodeMap.get(element));
+          mmNodeMap.get(element).payload.fold = false;
+        });
+        // mm.setData(currNode);
+
+        if (flatNodeQueuePos > 2) {
+          flatNodeQueue[flatNodeQueuePos - 1].payload.fold = false;
+          flatNodeQueue[flatNodeQueuePos - 2].payload.fold = false;
+        }
+        if (flatNodeQueuePos < flatNodeQueue.length - 2) {
+          flatNodeQueue[flatNodeQueuePos + 1].payload.fold = false;
+          flatNodeQueue[flatNodeQueuePos + 2].payload.fold = false;
+        }
+
+        mm.renderData();
+        mm.fit();
+      }
+    }
+
+    traverse_tree(mmdataroot);
+    mmdataroot.payload.fold = false;
+    mm.renderData();
+    mm.fit();
+    console.log(flatNodeQueue);
+    console.log(mmNodeMap);
+
+    function log(e) {
+      console.log(e.key);
+      if (e.key === "j" && flatNodeQueuePos > 1) {
+        // var testNode = mmdataroot.children[1].children[2];
+        // console.log(testNode);
+
+        // testNode.payload.fold = !((testNode.payload) != null && testNode.payload.fold)
+        // mm.renderData();
+        // mm.fit();
+
+        flatNodeQueuePos--;
+        renderMMNodeWithPath();
+
+      } else if (e.key === "k" && flatNodeQueuePos < flatNodeQueue.length) {
+        flatNodeQueuePos++;
+        renderMMNodeWithPath();
+      } else if (e.key === "h" ) {
+        flatNodeQueuePos=0;
+        renderMMNodeWithPath();
+      } else if (e.key === "l" ) {
+        flatNodeQueuePos = flatNodeQueue.length - 1;
+        renderMMNodeWithPath();
+
+      } else if (e.key === "0") {
+        //mm.fit();
+        console.log(mm.state.data);
+        flatNodeQueuePos = 0;
+        showAll(mmdataroot);
+        mm.renderData();
+        mm.fit();
+      } else if (e.key === "d") {
+        console.log(mm);
+      } else if (e.key === "=") {
+        mm.rescale(1.25);
+      } else if (e.key === "-") {
+        mm.rescale(0.8);
+      } else if (e.key === "f") {
+        mm.fit();
+      }
+    }
+  </script>
+</body>
+
+</html>
