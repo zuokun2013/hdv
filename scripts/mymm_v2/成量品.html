@@ -505,6 +505,20 @@
       })
     }
 
+	const showLevel = (target, level) => {
+		console.log('target.depth=' + target.depth );
+		console.log('currRoot.depth=' + currRoot.depth );
+		if(target.depth - currRoot.depth > level) return;
+      target.payload = {
+        ...target.payload,
+        fold: false,
+      }
+
+      target.children?.forEach((t) => {
+        showLevel(t, level)
+      })
+    }
+
     function renderMMNodeWithPath() {
       hideAll(mmDataRoot);
 
@@ -603,7 +617,31 @@
 		mm.setData(currRoot);
 		// 
         // renderMMNodeWithPath();
-
+	} else if (e.key === "3" ) {
+		hideAll(currRoot);
+        showLevel(currRoot, 3);
+		mm.renderData();
+        mm.fit();
+	} else if (e.key === "4" ) {
+		hideAll(currRoot);
+        showLevel(currRoot, 4);
+		mm.renderData();
+        mm.fit();
+	} else if (e.key === "5" ) {
+		hideAll(currRoot);
+        showLevel(currRoot, 5);
+		mm.renderData();
+        mm.fit();
+	} else if (e.key === "6" ) {
+		hideAll(currRoot);
+        showLevel(currRoot, 6);
+		mm.renderData();
+        mm.fit();
+	} else if (e.key === "7" ) {
+		hideAll(currRoot);
+        showLevel(currRoot, 7);
+		mm.renderData();
+        mm.fit();
       } else if (e.key === "0") {
         //mm.fit();
         console.log(mm.state.data);
