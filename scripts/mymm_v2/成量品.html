@@ -508,7 +508,7 @@
 	const showLevel = (target, level) => {
 		console.log('target.depth=' + target.depth );
 		console.log('currRoot.depth=' + currRoot.depth );
-		if(target.depth - currRoot.depth > level) return;
+		if(target.depth - currRoot.depth >= level) return;
       target.payload = {
         ...target.payload,
         fold: false,
@@ -644,9 +644,9 @@
         mm.fit();
       } else if (e.key === "0") {
         //mm.fit();
-        console.log(mm.state.data);
-        flatNodeQueuePos = 0;
-        showAll(mmDataRoot);
+        //console.log(mm.state.data);
+        //flatNodeQueuePos = 0;
+        showAll(currRoot);
         mm.renderData();
         mm.fit();
       } else if (e.key === "d") {
