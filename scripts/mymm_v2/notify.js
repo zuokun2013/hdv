@@ -26,7 +26,7 @@
       setAutocloseTimeout($item, options.timeout);
     }
 
-    setCloseOnClick($item);
+    // setCloseOnClick($item);
 
     $container.append($item);
   }
