@@ -510,10 +510,10 @@
 		console.log('target.depth=' + target.depth );
 		console.log('currRoot.depth=' + currRoot.depth );
 		if(target.depth - currRoot.depth >= level) return;
-      target.payload = {
-        ...target.payload,
-        fold: false,
-      }
+		target.payload = {
+			...target.payload,
+			fold: false,
+		}
 
       target.children?.forEach((t) => {
         showLevel(t, level)
