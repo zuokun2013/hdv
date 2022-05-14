@@ -677,7 +677,8 @@
         flatNodeQueuePos = flatNodeQueue.length - 1;
         renderMMNodeWithPath();
 	} else if (e.key === "." ) {
-		currRoot = flatNodeQueue[flatNodeQueuePos];   
+		//currRoot = flatNodeQueue[flatNodeQueuePos];   
+		currRoot = gl_currNode;
 		// flatNodeQueue = [];
     	// flatNodeQueuePos = 1;     
 		console.log('======================');
@@ -738,7 +739,8 @@
         mm.renderData();
         mm.fit();
 	} else if (e.key === "t" ) {	
-		currNode = flatNodeQueue[flatNodeQueuePos];   	
+		//currNode = flatNodeQueue[flatNodeQueuePos];   
+		currNode = gl_currNode;	
         toggleFold(currNode, !(currNode.payload.fold));
 		mm.renderData();
         mm.fit();
