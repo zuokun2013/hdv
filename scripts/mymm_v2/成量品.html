@@ -453,6 +453,7 @@
 		flatNodeQueue = [];
     	flatNodeQueuePos = 0; 
 		mmNodeMap = new Map();
+
 		gl_currNode = root;
 		// Stack to store the nodes
 		var nodes = [];
@@ -536,11 +537,14 @@
     }
 
 	function gotoFirstChild(currNode) {
-		console.log(currNode.state.path);
+		console.log("gotoFirstChild=" + currNode.state.path);
 		if(currNode != null && currNode.children != null) {
+			console.log("currNode.children=" + currNode.children);
 			currNode.payload.fold = false;			
 			gl_currNode = currNode.children[0];
-			highlightNode(gl_currNode);
+			console.log("gl_currNode.content=" + gl_currNode.content);
+			console.log("gl_currNode.state.path=" + gl_currNode.state.path);
+			
 		}
 	}
 
@@ -589,7 +593,7 @@
 		const collection2 = document.querySelectorAll("[data-path='" + currNode.state.path + "']");
 		for (let i = 0; i < collection2.length; i++) {
 			collection2[i].style.cssText = 'font-weight: bold;'
-			
+			console.log(collection2[i]);
 		}
 	}
 
@@ -696,6 +700,7 @@
         gotoFirstChild(gl_currNode);
 		mm.renderData();
         mm.fit();
+		highlightNode(gl_currNode);
 	} else if (e.key === "s" ) {
         gotoNextSibling(gl_currNode);
 		mm.renderData();
