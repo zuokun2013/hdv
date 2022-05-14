@@ -441,6 +441,7 @@
 
     var mmDataRoot = mm.state.data;
 	var currRoot = mmDataRoot;
+	var gl_currNode = mmDataRoot;
     var flatNodeQueue = [];
     var flatNodeQueuePos = 0;
     let mmNodeMap = new Map();
@@ -452,6 +453,7 @@
 		flatNodeQueue = [];
     	flatNodeQueuePos = 0; 
 		mmNodeMap = new Map();
+		gl_currNode = root;
 		// Stack to store the nodes
 		var nodes = [];
 
@@ -533,6 +535,64 @@
       })
     }
 
+	function gotoFirstChild(currNode) {
+		console.log(currNode.state.path);
+		if(currNode != null && currNode.children != null) {
+			currNode.payload.fold = false;			
+			gl_currNode = currNode.children[0];
+			highlightNode(gl_currNode);
+		}
+	}
+
+	function getPreNode(currNode) {
+		console.log(currNode.state.path);
+		//get parent
+		//children before me
+	}
+
+	function gotoParent(currNode) {
+		const currPath = currNode.state.path.split(".");
+		console.log(currPath);
+		if(currPath.length >= 2) {
+			console.log("parent id=" + currPath[currPath.length - 2]);
+			parent = mmNodeMap.get(currPath[currPath.length - 2]);
+			console.log(parent);
+			gl_currNode = parent;
+			highlightNode(gl_currNode);
+			
+		}
+	}
+
+	function gotoNextSibling(currNode) {
+		console.log("gotoNextSibling=" + currNode.state.path);
+		const currPath = currNode.state.path.split(".");
+		console.log(currPath);
+		if(currPath.length >= 2) {
+			console.log("parent id=" + currPath[currPath.length - 2]);
+			parent = mmNodeMap.get(currPath[currPath.length - 2]);
+			console.log(parent);
+			cidx = parent.children.indexOf(currNode);
+			if(cidx < parent.children.length -1) {
+				nextSibling = parent.children[cidx + 1];
+				gl_currNode = nextSibling;
+				highlightNode(gl_currNode);
+			}
+		}
+	}
+
+	function highlightNode(currNode) {
+		const collection = document.getElementsByClassName("notify-item");
+		for (let i = 0; i < collection.length; i++) {
+			collection[i].remove();
+		}
+		notify({message: currNode.content});
+		const collection2 = document.querySelectorAll("[data-path='" + currNode.state.path + "']");
+		for (let i = 0; i < collection2.length; i++) {
+			collection2[i].style.cssText = 'font-weight: bold;'
+			
+		}
+	}
+
     function renderMMNodeWithPath() {
 		hideAll(currRoot);
 
@@ -551,18 +611,7 @@
         console.log(currNode);
         console.log(currNode.state.path);
 
-		//   window.FlashMessage.success(currNode.content);
-	//   notify({message: currNode.content,  timeout: 3000});
-		const collection = document.getElementsByClassName("notify-item");
-		for (let i = 0; i < collection.length; i++) {
-			collection[i].remove();
-		}
-		notify({message: currNode.content});
-		const collection2 = document.querySelectorAll("[data-path='" + currNode.state.path + "']");
-		for (let i = 0; i < collection2.length; i++) {
-			collection2[i].style.cssText = 'font-weight: bold;'
-			
-		}
+		highlightNode(currNode);
 		
         const currPath = currNode.state.path.split(".");
         currPath.forEach(element => {
@@ -639,6 +688,18 @@
 		console.log(mmNodeMap);
 		// 
         // renderMMNodeWithPath();
+	} else if (e.key === "a" ) {
+        gotoParent(gl_currNode);
+		mm.renderData();
+        mm.fit();
+	} else if (e.key === "d" ) {
+        gotoFirstChild(gl_currNode);
+		mm.renderData();
+        mm.fit();
+	} else if (e.key === "s" ) {
+        gotoNextSibling(gl_currNode);
+		mm.renderData();
+        mm.fit();
 	} else if (e.key === "3" ) {
 		hideAll(currRoot);
         showLevel(currRoot, 3);
