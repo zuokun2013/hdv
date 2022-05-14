@@ -548,10 +548,21 @@
 		}
 	}
 
-	function getPreNode(currNode) {
-		console.log(currNode.state.path);
-		//get parent
-		//children before me
+	function gotoPreNode(currNode) {
+		console.log("gotoPreNode=" + currNode.state.path);
+		const currPath = currNode.state.path.split(".");
+		console.log(currPath);
+		if(currPath.length >= 2) {
+			console.log("parent id=" + currPath[currPath.length - 2]);
+			parent = mmNodeMap.get(currPath[currPath.length - 2]);
+			console.log(parent);
+			cidx = parent.children.indexOf(currNode);
+			if(cidx >= 1) {
+				nextSibling = parent.children[cidx - 1];
+				gl_currNode = nextSibling;
+				highlightNode(gl_currNode);
+			}
+		}
 	}
 
 	function gotoParent(currNode) {
@@ -590,10 +601,15 @@
 			collection[i].remove();
 		}
 		notify({message: currNode.content});
-		const collection2 = document.querySelectorAll("[data-path='" + currNode.state.path + "']");
+		const collection2 = document.querySelectorAll("[data-path]");
 		for (let i = 0; i < collection2.length; i++) {
-			collection2[i].style.cssText = 'font-weight: bold;'
+			collection2[i].style.cssText = ''
 			console.log(collection2[i]);
+		}
+		const collection3 = document.querySelectorAll("[data-path='" + currNode.state.path + "']");
+		for (let i = 0; i < collection3.length; i++) {
+			collection3[i].style.cssText = 'font-weight: bold;'
+			console.log(collection3[i]);
 		}
 	}
 
@@ -706,6 +722,11 @@
         gotoNextSibling(gl_currNode);
 		mm.renderData();
         mm.fit();
+	} else if (e.key === "w" ) {
+        gotoPreNode(gl_currNode);
+		mm.renderData();
+        mm.fit();
+		highlightNode(gl_currNode);
 	} else if (e.key === "3" ) {
 		hideAll(currRoot);
         showLevel(currRoot, 3);
