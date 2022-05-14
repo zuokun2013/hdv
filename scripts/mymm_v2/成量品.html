@@ -451,6 +451,7 @@
     function buildCurrTree(root) {
 		flatNodeQueue = [];
     	flatNodeQueuePos = 0; 
+		mmNodeMap = new Map();
 		// Stack to store the nodes
 		var nodes = [];
 
@@ -473,11 +474,11 @@
 
 				// Store all the childrent of
 				// current node from right to left.
-				for (var i = curr.children.length - 1;
-					i >= 0; i--) {
-					if (curr.children[i] != null && curr.children[i].children != null) {
-						nodes.push(curr.children[i]);
-					}
+				for (var i = curr.children.length - 1; i >= 0; i--) {
+                    nodes.push(curr.children[i]);
+					// if (curr.children[i] != null && curr.children[i].children != null) {
+					// 	nodes.push(curr.children[i]);
+					// }
 				}
 			}
 		}
@@ -519,8 +520,21 @@
       })
     }
 
+	const toggleFold = (target, foldFlag) => {
+		console.log('target.depth=' + target.depth );
+		console.log('currRoot.depth=' + currRoot.depth );
+		target.payload = {
+			...target.payload,
+			fold: foldFlag,
+		}
+
+      target.children?.forEach((t) => {
+        toggleFold(t, foldFlag)
+      })
+    }
+
     function renderMMNodeWithPath() {
-      hideAll(mmDataRoot);
+		hideAll(currRoot);
 
       // var currNode = flatNodeQueue.shift();
       console.log('---------------- renderMMNodeWithPath -------------')
@@ -528,26 +542,30 @@
       console.log(flatNodeQueue);
 	  
       var currNode = flatNodeQueue[flatNodeQueuePos];
-	//   window.FlashMessage.success(currNode.content);
-	//   notify({message: currNode.content,  timeout: 3000});
-	const collection = document.getElementsByClassName("notify-item");
-	for (let i = 0; i < collection.length; i++) {
-		collection[i].remove();
-	}
-	  notify({message: currNode.content});
-	  const collection2 = document.querySelectorAll("[data-path='" + currNode.state.path + "']");
-	  for (let i = 0; i < collection2.length; i++) {
-		collection2[i].style.cssText = 'font-weight: bold;'
-		
-	}
+	  
+	
 
       // if(flatNodeQueuePos>0) {
       // }
       if (currNode != null) {
         console.log(currNode);
         console.log(currNode.state.path);
+
+		//   window.FlashMessage.success(currNode.content);
+	//   notify({message: currNode.content,  timeout: 3000});
+		const collection = document.getElementsByClassName("notify-item");
+		for (let i = 0; i < collection.length; i++) {
+			collection[i].remove();
+		}
+		notify({message: currNode.content});
+		const collection2 = document.querySelectorAll("[data-path='" + currNode.state.path + "']");
+		for (let i = 0; i < collection2.length; i++) {
+			collection2[i].style.cssText = 'font-weight: bold;'
+			
+		}
+		
         const currPath = currNode.state.path.split(".");
-        currPath.every(element => {
+        currPath.forEach(element => {
 			console.log(element);
 			console.log(mmNodeMap.get(element));
 
@@ -557,17 +575,17 @@
 			// }
 
 			mmNodeMap.get(element).payload.fold = false;
-			return true;
+			// return true;
         });
         // mm.setData(currNode);
 
-        if (flatNodeQueuePos > 2) {
+        if (flatNodeQueuePos > 1) {
           flatNodeQueue[flatNodeQueuePos - 1].payload.fold = false;
-          flatNodeQueue[flatNodeQueuePos - 2].payload.fold = false;
+        //   flatNodeQueue[flatNodeQueuePos - 2].payload.fold = false;
         }
-        if (flatNodeQueuePos < flatNodeQueue.length - 2) {
+        if (flatNodeQueuePos < flatNodeQueue.length - 1) {
           flatNodeQueue[flatNodeQueuePos + 1].payload.fold = false;
-          flatNodeQueue[flatNodeQueuePos + 2].payload.fold = false;
+        //   flatNodeQueue[flatNodeQueuePos + 2].payload.fold = false;
         }
 
         mm.renderData();
@@ -598,6 +616,7 @@
       } else if (e.key === "k" && flatNodeQueuePos < flatNodeQueue.length) {
         flatNodeQueuePos++;
         renderMMNodeWithPath();
+		console.log(mmNodeMap.size);
       } else if (e.key === "h" ) {
         flatNodeQueuePos=0;
         renderMMNodeWithPath();
@@ -610,11 +629,14 @@
     	// flatNodeQueuePos = 1;     
 		console.log('======================');
 		console.log(currRoot);
-		buildCurrTree(currRoot);
+        mm.setData(currRoot);
+		buildCurrTree(mm.state.data);
 		console.log('======================');
 		console.log(flatNodeQueue);
-		showAll(currRoot);
-		mm.setData(currRoot);
+		showAll(mm.state.data);
+		
+        console.log("mmNodeMap");
+		console.log(mmNodeMap);
 		// 
         // renderMMNodeWithPath();
 	} else if (e.key === "3" ) {
@@ -648,6 +670,11 @@
         //flatNodeQueuePos = 0;
         showAll(currRoot);
         mm.renderData();
+        mm.fit();
+	} else if (e.key === "t" ) {	
+		currNode = flatNodeQueue[flatNodeQueuePos];   	
+        toggleFold(currNode, !(currNode.payload.fold));
+		mm.renderData();
         mm.fit();
       } else if (e.key === "d") {
         console.log(mm);
