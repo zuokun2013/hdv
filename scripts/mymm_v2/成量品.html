@@ -511,8 +511,10 @@
 
 	const showLevel = (target, level) => {
 		console.log('target.depth=' + target.depth );
+		console.log('target.state.path=' + target.state.path );
 		console.log('currRoot.depth=' + currRoot.depth );
-		if(target.depth - currRoot.depth >= level) return;
+		
+		if(target.state.path.split(".").length - currRoot.state.path.split(".").length >= level) return;
 		target.payload = {
 			...target.payload,
 			fold: false,
