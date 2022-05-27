@@ -1,7 +1,7 @@
 let transformer = new markmap.Transformer();
     const { root, features } = transformer.transform(markdown);
     console.log(root);
-    
+
 ((w, x, k, M) => { const _ = w(); window.mm = _.Markmap.create("svg#mindmap", x == null ? void 0 : x(_, M), k) })(() => window.markmap, (e, t) => e.deriveOptions(t), root, { "color": null, "maxWidth": 300 });
 
 window.addEventListener("keypress", log);
@@ -81,7 +81,7 @@ const showLevel = (target, level) => {
     console.log('target.state.path=' + target.state.path );
     console.log('currRoot.depth=' + currRoot.depth );
     
-    if(target.state.path.split(".").length - currRoot.state.path.split(".").length >= level) return;
+    if(target.state.path.split(".").length - currRoot.state.path.split(".").length >= level -1) return;
     target.payload = {
         ...target.payload,
         fold: false,
@@ -296,6 +296,11 @@ function log(e) {
     mm.renderData();
     mm.fit();
     highlightNode(gl_currNode);
+} else if (e.key === "2" ) {
+    hideAll(currRoot);
+    showLevel(currRoot, 2);
+    mm.renderData();
+    mm.fit();    
 } else if (e.key === "3" ) {
     hideAll(currRoot);
     showLevel(currRoot, 3);
