@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Markmap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #mindmap {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+  <script src="./mmlib.js"></script>
+</head>
+
+<body>
+  <svg id="mindmap"></svg>
+  <script src="d3_6.7.0.js"></script>
+  <script src="./mmview.js"></script>
+  <script>
+    
+    var markdown = `
+# 1 念死
+  
+ - 我们随时随地要唯一观修死亡，观想行、住、坐、卧一切所为都是此世最后的一次，口中也如此言说，心中也这样诚挚观修。如果去往其他地方也想可能会客死他乡而没有重返故土的机会；启程上路或者在台阶上休息时也想可能会死于此处；无论坐在何处也都应观想可能会死在这里。晚上睡眠时也要想：今晚会死在睡觉的地方，明天不一定还活在人间；早晨起床时也要想：在今天当中也许就会命绝身亡，今天晚上不一定还有睡觉的机会。要发自内心情不自禁唯独观修死亡。从前，噶当派的格西们在晚上睡觉之前常常思维：不知道明天早晨还用不用生火。因此他们往往不盖火 并且将碗也是倒扣放置，每时每刻心中都对死亡有坚定不移的胜解。我们要像他们那样身体力行。
+	- 总说
+		- 必要（Why）
+			- 虽然今天或此时、此阶段是死还是不死都不决定，但心应该执持死的方面，发起“唯一会死”的心。为什么要这样做呢？如果心想我不会死，那从“不死”的想里就会出现一切现世欲，在它的驱使下，我们的暇满几乎全数落在非法中。而修死想就转变方向了，一想到会死，忙其他就没意义，应当为死做准备而修法，这样当下就能取坚实义。以这个缘故，如果能在一切阶段、一切时位先发起死想，让它当家作主，这样有力地发起后，缘起就被控制住了，截断了现世法之流，往法道上走了。因此要唯一修死，也就是在既可修死想又可修不死想两者中，唯一选择修死想。
+		- 时位（When）
+			- 死想要贯彻一生，细到每一个时间、每一个阶段都唯一起无常想、死想，以此来摄持自心入于正法之门。
+			  我们现在就要清楚，往后时时都要带着无常想、死想，而且一起头就有。所以事先就要想好：我这一生不过若干年，每一年有365天，每一天无非是行、住、睡三种日常生活种类。我们每天无非是睡眠位和醒觉位两类，醒觉位中无非是行位和住位两种。这里“住”不能理解成“行住坐卧”的“住”，那是站立的意思。这里的“行住”，即行藏或行止。也就是每天要么睡觉，要么醒来，醒来要么出门办事、上班等，要么住在家里或某个地方，这叫“行”和“住”。这三个种类摄了一切威仪。这里的所有阶段或活动都是一段一段在相续，在每个段落当中，都要以死想作为等起来摄持心入于法道中，也就是要想到：“这是这一生最后一次！”
+		- 行相（How）
+			- 具体的修法，指对于行、住、卧三大类威仪，
+			  无论哪个阶段都想死的方面。扣到相应的威仪上想：“这是我在人间最后一次做这个！”比如，这是最后一次出门，这是最后一次听课，这是最后一次睡等等。要让观念深入骨髓，关键在心、口两门，所以要不断地口里说、心里明显地现来修。所谓“明现”，指不是大概的、含糊的、略略的，而是非常明了、确定，这样才会发生观念的力量。当观念上已经转成死想，心态、行为就都会随之转变，取向也会改变。这是修的方式方法。
+			- ==“口说心想”==，
+			  是为了让观念渗入到骨髓。我们起观念都要通过心、口两门。以世间恶法为例，譬如男女相爱时，口里说“我爱你”，心里也很明确地现出“我爱你”，这样逐步发展下去，就会达到很炽盛的地步，心完全随爱的烦恼转，缘起就往那边发展了。也就是当口里说了，心里明确了以后，心就会非常有力量，之后就被这样的欲所转了。那么同样，我们口里说“我今天会死！”“这是最后一次，我会死的！”心里也非常明确地观或者现：“不可能再有后面！”这样口里不断地说，心里也明确地现，死想就越来越有力量。最后心完全被死想抓住而截断今生的所为，一心寻求能解脱死的方法，这样就把心全部纳入法道当中了。
+		-
+	- 别说
+		- ##### 1、教导怎么配在威仪上念死（How - Details)
+			- 具体说明修的方法，包括行、住、卧三方面，
+				- 每一种又有两个方向的观念：
+					- 一、现在位会死
+						- 现在方面要肯定地想：“我会在此处死，会在做这件事时死”；
+					- 遮止未来位
+						- 二、对于未来要否定掉“决定还会有”的想法，换成“不一定还能再做”“不一定还有下一次”等等。
+						  必要是，对于现前的事，从肯定方面想“会死吧！”就能遮掉对现世法的耽染，当下提起修法的心。对于未来打破“还会有”的想法，想到不一定会有，当即截断对未来的各种妄想、思虑、计划等等。这样想的话，如果现在死，我也住在法上了，这是应当的；即使不会死，也一心缘于法了，因此非常有必要。总之，有力量的死想能瓦解掉一切对现世法的欲求，以及贪婪、嗔恚、竞争、散乱等的心态，所以它像大铁锤，能锤掉各种对现世法的耽著。
+			- 具体示范。
+				- 行的方面，比如要出门去别的地方，就想“我会死在那里吧”。
+				  如果去上班，就想“我会死在路上吧”，或者“我会死在公司里吧”。这是从现在位遮掉“会活”的想法，倾向决定会死。这样提起正念后就要为死作准备，由此心就转到修法上了，只有修法在死时有益的缘故。再者，未来方面是想：“我不一定还能回来”，对于回来以后的事不作打算。就好比上了战场，想“我不一定能生还”，所以，往后如何生活等的想法全部放下。再者，到了路上或者在路边的座椅上休息，也想“我会在这里死吧，不一定还有后面”。到了工作地点，正在做某项工作，就想“我会死在这里，正工作着就忽然会死吧”。像这样，马上住在“死”的正念里。
+				- 接着，住的方面。譬如假期待在家里，就想“我会死在屋里吧”，“这次假期我会死吧”。
+				  到了周末就想：“我周末会死在家里吧，不一定还有下周”，因此，把下周的想法全部遮掉。之后马上警惕起来：“我很快会死，可能现在会死”，心赶紧住在修法中。
+				- 再说睡卧。每一天醒觉位的活动完毕就要进入睡眠，这时要提起现在位和未来位两方面的死想。
+				  也就是想：“我会死在床上吧，不一定还有明天”，明天难保还能醒来，所以不做明天的打算。第二天一早醒来，就想“我今天会死吧，今晚不一定还能睡下”。这样一方面马上提起会死的想法，另一方面遮掉未来的想法。
+			- 总之，在行、住、卧三类的每一个分位之前，都要安置这==两种想法。一方面当下提起会死的心，马上进入到对死的准备上，另一方面想到未来不一定还有，截断未来的计划==。
+		- ##### 2、 指明念死在心上的要求(要点)
+			- 1发自内心 2痛切
+			  这样修时，要求**发自内心痛切地唯修死想**。“发自内心”指特别真实地作意。“痛切”指心专注在一个点上，特别深、特别切。
+			  这样情真意切，一次又一次地想，最终会真实出现无常心、死想。会想到死真的要来，真的是这样，我要开始为死做准备。这样才不是知识化的表面说说、有口无心、只是干枯的语言等。之所以修法不成功，就是因为不痛切，如果能处处痛念无常，心当即就会转向法，所以，痛切也特别重要。
+		- ##### 3、教导平日修持的相（典范）
+			- 噶当派诸格西是修无常的典范，切实地把无常想配在日常的各种威仪中。
+			- 他们晚上睡觉时作意：“我今晚会死吧！没有明天了”，所以不用盖火，碗也倒扣，因为明天不必用碗了
+		-
+## 2 念法
+  
+  仅仅修习死亡还不够，因为人在临终时绝对有利的只有正法，所以我们必须恒时不离正知正念，深刻地认识到轮回的一切琐事均无有恒常、无有实质，时常督促自己修持正法。
+  本来身心的暂时组合就是无常的，为此不要将假合的身体执著为我。所行的道路是无常的，一举手一投足都要如理如法，《般若摄颂》中云：“唯看一木轭，行走心不乱。”身居的处所是无常的，应当将它观想为净土；饮食受用是无常的，应当享用禅定的美食；躺卧睡眠是无常的，应当将迷乱修成光明境界；富有的珍宝是无常的，应当依靠圣者七财；亲朋近邻是无常的，应当栖身静处激发出离；名誉地位是无常的，应当恒常身居低位；言谈话语是无常的，应当督促自己念咒、诵经；信心出离也是无常的，应当为誓言得以稳固而精进；想法妄念通通是无常的，应当具备贤善的人格；验相证悟是无常的，务必要至达法界尽地。到那时候，已经了脱生死，生死完全掌握在自己的手中，有自在操纵死亡的把握，荣得无死的坚地，就像雄鹰翱翔在虚空中一样，死亡到来也无所畏惧，从此之后无需修行。
+	- 总说
+		- “忆念”，“正知”
+		  
+		  “忆念”，指当下记得一切轮回事无常、不可依靠，只有法可依靠。“正知”，指明知身心的状况，到底是在非法上做还是在法上摄取。有了忆念和正知就能调控身心，如果心趣于现世法，那就立即切断；如果在摄取正法，就鼓励自己认真去做。这样一直在忆念和正知的状况下，就能够了知一切轮回事没有常存、坚实，因缘一散就没有了，靠不住，利益不到死时以及来世，由此就把现世法拿掉了。另一方面，对真实法作闻思修对未来有利益，因为佛说的权实二法，就是要把我们引向不生不灭的本性之地。它叫做“真实法”。轮回法欻生欻灭，只是空花幻影，哪里靠得住？我们唯一要学的是能将自心直接、间接引到本来之地的妙法，包括灭谛、道谛以及宣说它的教法。或者，真实法就是佛证得的如来藏心，也是我们的本性，权法就是为了引到这上面而施设的各种方便。因此要知道，只有法有利益，轮回法都是不可靠的，看到它的后边际是灭尽无余、灰飞烟灭，就知道毫无意义，哪里可靠？像这样，在很明知的状况下，就劝自心不要再搞了，不要再做虚假无义、徒劳辛苦的事，应当歇下轮回的作为，夜以继日地励力摄取真实法。
+	- 别说--十法行
+		- 1. 我无常，思--无我（从‘我’做起）
+		  2. 道路无常，行--法道
+		  3. 住所无常，住--净土
+		  4. 受用无常，食禅悦
+		  5. 睡眠无常，梦光明
+		  6. 财富无常，求法财（七圣财）
+		  7. 亲友无常，去静处
+		  8. 名位无常，处低位
+		  9. 言论无常，念诵精进
+		  10. 信心无常，誓愿坚固
+		  11. 分别无常，人格贤善
+		  12. 验相无常，法性尽地
+		-
+	-
+
+`;
+
+    let transformer = new markmap.Transformer();
+    const { root, features } = transformer.transform(markdown);
+    console.log(root);
+    
+  </script>
+
+  <script>((w, x, k, M) => { const _ = w(); window.mm = _.Markmap.create("svg#mindmap", x == null ? void 0 : x(_, M), k) })(() => window.markmap, (e, t) => e.deriveOptions(t), root, { "color": null, "maxWidth": 300 })</script>
+  <script>
+    window.addEventListener("keypress", log);
+
+    var mmdataroot = mm.state.data;
+    var flatNodeQueue = [];
+    var flatNodeQueuePos = 0;
+    let mmNodeMap = new Map();
+    // flatNodeQueue.push(2);         // queue is now [2]
+    // flatNodeQueue.push(5);         // queue is now [2, 5]
+    // var i = flatNodeQueue.shift(); // queue is now [5]
+
+    function traverse_tree(root) {
+
+      // Stack to store the nodes
+      var nodes = [];
+
+      // Push the current node onto the stack
+      nodes.push(root);
+
+      // Loop while the stack is not empty
+      while (nodes.length != 0) {
+
+        // Store the current node and pop
+        // it from the stack
+        var curr = nodes.pop();
+        flatNodeQueue.push(curr);
+        mmNodeMap.set(curr.state.id.toString(), curr);
+        curr.payload.fold = true;
+
+        // Current node has been travarsed
+        if (curr != null && curr.children != null) {
+          document.write(curr.key + " ");
+
+          // Store all the childrent of
+          // current node from right to left.
+          for (var i = curr.children.length - 1;
+            i >= 0; i--) {
+            if (curr.children[i] != null && curr.children[i].children != null) {
+              nodes.push(curr.children[i]);
+            }
+          }
+        }
+      }
+    }
+
+    const hideAll = (target) => {
+      target.payload = {
+        ...target.payload,
+        fold: true,
+      }
+
+      target.children?.forEach((t) => {
+        hideAll(t)
+      })
+    }
+
+    const showAll = (target) => {
+      target.payload = {
+        ...target.payload,
+        fold: false,
+      }
+
+      target.children?.forEach((t) => {
+        showAll(t)
+      })
+    }
+
+    function renderMMNodeWithPath() {
+      hideAll(mmdataroot);
+
+      // var currNode = flatNodeQueue.shift();
+      console.log('---------------- renderMMNodeWithPath -------------')
+      console.log(flatNodeQueuePos);
+      console.log(flatNodeQueue);
+      var currNode = flatNodeQueue[flatNodeQueuePos];
+
+      // if(flatNodeQueuePos>0) {
+      // }
+      if (currNode != null) {
+        console.log(currNode);
+        console.log(currNode.state.path);
+        const currPath = currNode.state.path.split(".");
+        currPath.forEach(element => {
+          console.log(element);
+          console.log(mmNodeMap.get(element));
+          mmNodeMap.get(element).payload.fold = false;
+        });
+        // mm.setData(currNode);
+
+        if (flatNodeQueuePos > 2) {
+          flatNodeQueue[flatNodeQueuePos - 1].payload.fold = false;
+          flatNodeQueue[flatNodeQueuePos - 2].payload.fold = false;
+        }
+        if (flatNodeQueuePos < flatNodeQueue.length - 2) {
+          flatNodeQueue[flatNodeQueuePos + 1].payload.fold = false;
+          flatNodeQueue[flatNodeQueuePos + 2].payload.fold = false;
+        }
+
+        mm.renderData();
+        mm.fit();
+      }
+    }
+
+    traverse_tree(mmdataroot);
+    mmdataroot.payload.fold = false;
+    mm.renderData();
+    mm.fit();
+    console.log(flatNodeQueue);
+    console.log(mmNodeMap);
+
+    function log(e) {
+      console.log(e.key);
+      if (e.key === "j" && flatNodeQueuePos > 1) {
+        // var testNode = mmdataroot.children[1].children[2];
+        // console.log(testNode);
+
+        // testNode.payload.fold = !((testNode.payload) != null && testNode.payload.fold)
+        // mm.renderData();
+        // mm.fit();
+
+        flatNodeQueuePos--;
+        renderMMNodeWithPath();
+
+      } else if (e.key === "k" && flatNodeQueuePos < flatNodeQueue.length) {
+        flatNodeQueuePos++;
+        renderMMNodeWithPath();
+      } else if (e.key === "h" ) {
+        flatNodeQueuePos=0;
+        renderMMNodeWithPath();
+      } else if (e.key === "l" ) {
+        flatNodeQueuePos = flatNodeQueue.length - 1;
+        renderMMNodeWithPath();
+
+      } else if (e.key === "0") {
+        //mm.fit();
+        console.log(mm.state.data);
+        flatNodeQueuePos = 0;
+        showAll(mmdataroot);
+        mm.renderData();
+        mm.fit();
+      } else if (e.key === "d") {
+        console.log(mm);
+      } else if (e.key === "=") {
+        mm.rescale(1.25);
+      } else if (e.key === "-") {
+        mm.rescale(0.8);
+      } else if (e.key === "f") {
+        mm.fit();
+      }
+    }
+  </script>
+</body>
+
+</html>
