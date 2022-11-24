@@ -1,8 +1,9 @@
 ---
 marp: true
 
-footer: ""
-theme: default
+header: "瑜伽菩萨戒读诵仪轨"
+footer: "---- 内部参考资料 -----"
+theme: gaia
 class: invert
 style: |
   header {
@@ -10,7 +11,7 @@ style: |
   }
   p {
     font-size: 32pt;
-    margin-bottom: 5px;
+    margin-bottom: 6pt;
   }
   li {
     font-size: 32pt;
