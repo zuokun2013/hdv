@@ -24,7 +24,7 @@ sudo tlmgr install rsfs
 export PATH=/opt/homebrew/bin://usr/local/texlive/2022basic/bin/universal-darwin/:$PATH
 
 
-281  sudo tlmgr install extractbb
-282  sudo tlmgr install xeCJK
-286  sudo tlmgr install fancyhdr
-287  sudo tlmgr install lastpage
+281  sudo tlmgr install extractbb  
+282  sudo tlmgr install xeCJK  
+286  sudo tlmgr install fancyhdr  
+287  sudo tlmgr install lastpage  
