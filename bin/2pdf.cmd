@@ -1,6 +1,6 @@
 echo "--- `date` $1 ---"
 pandoc %1 -s ^
-    -V CJKmainfont="KaiTi" ^
+    -V CJKmainfont="YouYuan" ^
     --toc --number-section  ^
     -H pdf-options.sty ^
     --pdf-engine=xelatex ^
