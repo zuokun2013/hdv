@@ -1,3 +1,5 @@
+echo "Install miktex first"
+echo "choco install miktex"
 echo "--- `date` $1 ---"
 pandoc %1 -s ^
     -V CJKmainfont="YouYuan" ^
