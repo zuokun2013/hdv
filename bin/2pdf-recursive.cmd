@@ -1,14 +1,15 @@
 echo "Install miktex first"
 echo "choco install miktex"
-echo "--- `date` $1 ---"
-pandoc %1 -s ^
+
+
+for /R %f in (.\*.md) do ( pandoc %f -s ^
     -V CJKmainfont="YouYuan" ^
     --toc --number-section  ^
     -H %~dp0\pdf-options.sty ^
     --pdf-engine=xelatex ^
     --lua-filter %~dp0\count-para.lua ^
     --verbose ^
-    -o %1.pdf
+    -o %f.pdf)
 
-echo "--- `date` %cd%\%1.pdf done. ---" 
+
 echo ""
