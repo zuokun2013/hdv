@@ -13,3 +13,4 @@ mpv --speed=1.33 .\清净明悔1_2022-04-17_14-36-20.ogg
 mpv --speed=1.33 .\法王如意宝-怀业祈祷文.ogg
 mpv --speed=1.2 .\灵岩山寺女众师父-大悲咒及心经.ogg
 mpv --speed=1.4 C:\Users\zuokun\Music\观音上师-观音心咒110遍-1min.mp3
+mpv 每日短咒语念诵.mp3
