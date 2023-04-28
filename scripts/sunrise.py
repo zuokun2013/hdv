@@ -13,7 +13,7 @@ def datetime_from_utc_to_local(utc_datetime):
 # Set the observer's location
 observer = ephem.Observer()
 observer.lat = '49.16057281165747' # latitude of Richmond 49.16057281165747, -123.14370053902432
-observer.lon = '-123.14370053902432' # longitude of San Francisco
+observer.lon = '-123.14370053902432' # longitude of Richmond, BC
 
 # Set the date
 observer.date = '2023/4/28'
