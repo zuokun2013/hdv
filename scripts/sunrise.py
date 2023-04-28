@@ -22,6 +22,10 @@ observer.date = '2023/4/28'
 sunrise = observer.previous_rising(ephem.Sun())
 sunset = observer.next_setting(ephem.Sun())
 
+print('Date:\t', observer.date) 
+print('Lat:\t', observer.lat)
+print('Lon:\t', observer.lon)
+
 # Convert the times to local time zone and print them
 print('Sunrise:\t', ephem.localtime(sunrise))
 # print('Sunset:', ephem.localtime(sunset))
