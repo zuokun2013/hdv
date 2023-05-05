@@ -3,26 +3,26 @@ import time
  
 realpath=os.path.abspath(__file__)
 print(realpath)
-# os.system('cd ' + realpath)
+os.chdir('c:/tmp/20230505')
 
 # download files first
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/a/恒常念诵愿文.mp3"')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/a/恒常念诵愿文.mp3"')
 
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/课前念诵.mp4" ')
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/金刚七句-流畅版.mp4"')
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/普贤如来愿文.mp4"')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/课前念诵.mp4" ')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/金刚七句-流畅版.mp4"')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/普贤如来愿文.mp4"')
 
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/普贤如来愿文.mp4"')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/普贤如来愿文.mp4"')
 
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/普贤如来愿文.mp4"')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/普贤如来愿文.mp4"')
 
 
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/v/4jx/暇满难得-上师念诵.mp4"')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/v/4jx/暇满难得-上师念诵.mp4"')
 
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/v/法王如意宝阿弥陀佛灌顶实录.mp4"')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/v/法王如意宝阿弥陀佛灌顶实录.mp4"')
 
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/yigui/诸佛菩萨名号集-念诵仪轨.mp4"')
-os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/回向(2021版).mp4"')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/yigui/诸佛菩萨名号集-念诵仪轨.mp4"')
+# os.system('wget -N  "https://f.huidengchanxiu.net/hdv/videos/回向(2021版).mp4"')
 
 # 2 play files
 
@@ -38,10 +38,10 @@ os.system('mpv --fullscreen  "普贤如来愿文.mp4"')
 time.sleep(3)
 
 os.system('mpv --fullscreen  "暇满难得-上师念诵.mp4"')
-
+time.sleep(3)
 os.system('mpv --fullscreen  "法王如意宝阿弥陀佛灌顶实录.mp4"')
-# sleep 300 secs
-# time.sleep(300)
+# sleep 3 secs
+time.sleep(3)
 
 os.system('mpv --fullscreen  "诸佛菩萨名号集-念诵仪轨.mp4"')
 os.system('mpv --fullscreen  "回向(2021版).mp4"')
