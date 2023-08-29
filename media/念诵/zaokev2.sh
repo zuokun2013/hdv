@@ -4,10 +4,10 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 mpv --speed=1.33 $SCRIPTPATH/大恩上师-加倍咒.ogg
 mpv --speed=1.33 $SCRIPTPATH/大恩上师-念珠加持咒.ogg
-mpv --speed=1.33 $SCRIPTPATH/../语加持/yjc-2022.mp3
+#mpv --speed=1.33 $SCRIPTPATH/../语加持/yjc-2022.mp3
 mpv --speed=1.33 $SCRIPTPATH/大恩上师-圣八吉祥.ogg
-mpv --speed=1.33 $SCRIPTPATH/金刚萨埵如意宝珠及百字明21遍.ogg
-mpv --speed=1.33 $SCRIPTPATH/大恩上师-课前念诵.ogg
+#mpv --speed=1.33 $SCRIPTPATH/金刚萨埵如意宝珠及百字明21遍.ogg
+#mpv --speed=1.33 $SCRIPTPATH/大恩上师-课前念诵.ogg
 mpv --speed=1.33 $SCRIPTPATH/大恩上师-上师瑜伽速赐加持.ogg
 
 mpv --speed=1.4 $SCRIPTPATH/方磊及万佛圣城-楞严咒及咒心.ogg
