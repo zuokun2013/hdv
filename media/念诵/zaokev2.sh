@@ -3,6 +3,7 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 
 mpv --speed=1.33 $SCRIPTPATH/大恩上师-加倍咒.ogg
+mpv --fs "/Users/jzhang/Movies/yjc-bzm-2023-f4.mp4"
 mpv --speed=1.33 $SCRIPTPATH/大恩上师-念珠加持咒.ogg
 #mpv --speed=1.33 $SCRIPTPATH/../语加持/yjc-2022.mp3
 mpv --speed=1.33 $SCRIPTPATH/大恩上师-圣八吉祥.ogg
