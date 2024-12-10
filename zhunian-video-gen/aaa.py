@@ -1,14 +1,18 @@
-from moviepy import TextClip
+#!/usr/bin/env python3
 
-font = "/System/Library/Fonts/Supplemental/Arial.ttf"
-txt_clip1 = TextClip(
-    font = font,
-    text="Hello World !",
-    font_size=30,
-    size=(500, 200),
-    color="#FF0000",  # Red
-    bg_color="#FFFFFF",
-    duration=5,
-)
+"""Sync variant of the example for generating audio with a predefined voice"""
 
-txt_clip1.write_videofile("result1.mp4", fps=10)
+import edge_tts
+
+TEXT = "黄淑群女士"
+OUTPUT_FILE = "name.mp3"
+
+
+def main() -> None:
+    """Main function"""
+    communicate = edge_tts.Communicate(TEXT)
+    communicate.save_sync(OUTPUT_FILE)
+
+
+if __name__ == "__main__":
+    main()
