@@ -74,4 +74,4 @@ final_clip = concatenate_videoclips(
     ]
 )
 
-final_clip.write_videofile('./zhunian-' + text + '.mp4', fps=1, threads=8)
+final_clip.write_videofile('./zhunian-' + text + '.mp4', fps=10, threads=8)

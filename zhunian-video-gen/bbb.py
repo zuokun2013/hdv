@@ -3,10 +3,11 @@ from PIL import Image, ImageDraw, ImageFont
 
 # Load the image
 image = Image.open("Slide26.png")
+text = '亡者：' + '黄淑群女士'
 
 # Create a drawing context
 draw = ImageDraw.Draw(image)
-text = '亡者：黄淑群女士'
+
 position = (20, 20)
 
 font = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 64)
