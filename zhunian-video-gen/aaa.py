@@ -4,7 +4,7 @@
 
 import edge_tts
 
-TEXT = "黄淑群女士"
+TEXT = "杨梅珍女士"
 OUTPUT_FILE = "name.mp3"
 
 
