@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Markmap</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#mindmap {
+			display: block;
+			width: 100vw;
+			height: 100vh;
+		}
+	</style>
+	<script src="./mmlib.js"></script>
+	<link rel="stylesheet" href="./notify.css" />
+
+</head>
+
+<body>
+	<script src="./notify.js"></script>
+	<script src="./d3_6.7.0.js"></script>
+	<script src="./mmview.js"></script>
+	<svg id="mindmap"></svg>
+
+	<script >
+		var request = new XMLHttpRequest();
+		request.open('GET', 'data.md', false);
+		request.send();
+		var markdown = request.responseText;
+	</script>
+
+	<script src="myfunc.js"></script>
+</body>
+
+</html>
