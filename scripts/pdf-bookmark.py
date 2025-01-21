@@ -21,8 +21,8 @@ with open('toc.json', 'r', encoding='utf-8') as f:
 
 
     for x,y in data['toc'].items():
-        print(x, y+7)
-        writer.add_outline_item(x, y+7, parent=None)
+        print(x, y+1)
+        writer.add_outline_item(x, y+1, parent=None)
 
 # Closing file
 
