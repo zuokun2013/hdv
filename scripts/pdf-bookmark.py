@@ -1,6 +1,7 @@
 from PyPDF2 import PdfReader, PdfWriter
 
 import json
+import os
 
 with open('toc.json', 'r', encoding='utf-8') as f:
     # Opening JSON file
@@ -24,10 +25,24 @@ with open('toc.json', 'r', encoding='utf-8') as f:
         writer.add_outline_item(x, y+1, parent=None)
 
 # Closing file
-f.close()
 
-with open("c:\\tmp\\result.pdf", "wb") as fp:  # creating result pdf JCT
+
+
+# File path
+file_path = data['filename']
+
+# Extract the file name without the extension
+file_name = os.path.splitext(os.path.basename(file_path))[0]
+
+outputfile = file_name + '_output' + '.pdf'
+print(outputfile)  # Output: example
+
+with open(outputfile, "wb") as fp:  # creating result pdf JCT
     writer.write(fp)  # writing to result pdf JCT
+
+f.close()
+fp.close()
+
 
 # reader = PdfReader(r"C:\Users\zuoku\Downloads\加行班教材01.pdf")  # open input
 # writer = PdfWriter()  # open output
