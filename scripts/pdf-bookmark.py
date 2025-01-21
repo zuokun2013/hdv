@@ -9,12 +9,25 @@ with open('toc.json', 'r', encoding='utf-8') as f:
 
     print(data)
     print(data['filename'])
+
+    reader = PdfReader(data['filename'])  # open input
+    writer = PdfWriter()  # open output
+
+    n = len(reader.pages)
+
+    for i in range(n):
+        writer.add_page(reader.pages[i])  # insert page
+
+
     for x,y in data['toc'].items():
-        print(x, y+2)
+        print(x, y+1)
+        writer.add_outline_item(x, y+1, parent=None)
 
 # Closing file
 f.close()
 
+with open("c:\\tmp\\result.pdf", "wb") as fp:  # creating result pdf JCT
+    writer.write(fp)  # writing to result pdf JCT
 
 # reader = PdfReader(r"C:\Users\zuoku\Downloads\加行班教材01.pdf")  # open input
 # writer = PdfWriter()  # open output
