@@ -34,7 +34,7 @@ file_path = data['filename']
 # Extract the file name without the extension
 file_name = os.path.splitext(os.path.basename(file_path))[0]
 
-outputfile = file_name + '_output' + '.pdf'
+outputfile = os.path.join('.', 'output',  file_name + '.pdf')
 print(outputfile)  # Output: example
 
 with open(outputfile, "wb") as fp:  # creating result pdf JCT
