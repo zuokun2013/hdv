@@ -12,3 +12,6 @@ do
 #  mpv ~/Downloads/ding-101492.mp3
   
 done
+
+mpv $(dirname "$0")/ding-126626.mp3
+mpv $(dirname "$0")/ding-126626.mp3
