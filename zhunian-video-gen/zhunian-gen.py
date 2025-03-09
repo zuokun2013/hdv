@@ -1,7 +1,13 @@
 from moviepy import *
+import os
 
-name_text = '杨梅珍女士'
-srcVideo = "/Users/jzhang/Downloads/助念往生仪轨2022修改版.mp4"
+name_text = '刘德元女士'
+# srcVideo = "/Users/jzhang/Downloads/助念往生仪轨2022修改版.mp4"
+srcVideo = "/home/zuokun/Downloads/助念往生仪轨2022修改版.mp4"
+
+# fontDir="/System/Library/Fonts/PingFang.ttc"
+fontDir="/usr/share/fonts/opentype/noto/NotoSansCJK-Light.ttc"
+
 name_mp3="~name.mp3"
 name_png="~name.png"
 name_mp4="~name.mp4"
@@ -17,13 +23,17 @@ communicate.save_sync(name_mp3)
 from PIL import Image, ImageDraw, ImageFont
 
 # Load the image
-image = Image.open("Slide26.png")
+image_dir = os.path.dirname(os.path.realpath(__file__))
+image_file=os.path.join(image_dir, "Slide26.png")
+image = Image.open(image_file)
 text2 = '亡者：' + name_text
 
 # Create a drawing context
 draw = ImageDraw.Draw(image)
 position = (20, 20)
-font = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 64)
+# font = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 64)
+
+font = ImageFont.truetype(fontDir, 64)
 
 # Add text to the image
 draw.text(position, text2, font=font, fill=(10, 10, 10))
