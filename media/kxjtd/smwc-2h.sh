@@ -7,7 +7,7 @@ mpv /home/zuokun/Videos/观修仪轨2/0-v1.mp4
 mpv $curdir/1.m4a
 mpv $curdir/2.m4a
 
-for i in {1..19}
+for i in {1..18}
 do
   date
   echo "Loop spin:" $i
