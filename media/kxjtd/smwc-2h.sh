@@ -50,6 +50,11 @@ mpv $curdir/9-8.m4a
 mpv $curdir/9-9.m4a
 mpv $curdir/9-10.m4a
 
+
+mpv $curdir/ding-126626.mp3  
+mpv $curdir/ding-126626.mp3  
+mpv $curdir/ding-126626.mp3  
+
 mpv $curdir/10-出坐.mp4
 #mpv /home/zuokun/Videos/观修仪轨2/10.mp4
 date
