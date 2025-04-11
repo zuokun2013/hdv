@@ -49,3 +49,5 @@ ffmpeg -i 9.mp4 -i 9-8.png -ss 00:01:24.985 -to 00:01:37.998 -map 0:a -map 1:v -
 ffmpeg -i 9.mp4 -i 9-9.png -ss 00:01:37.998 -to 00:01:48.709 -map 0:a -map 1:v -c:a copy -c:v mjpeg -strict -2 -metadata:s:v title="Cover" -metadata:s:v comment="Cover (Front)" -disposition:v attached_pic 9-9.m4a
 
 ffmpeg -i 9.mp4 -i 9-10.png -ss 00:01:48.709 -map 0:a -map 1:v -c:a copy -c:v mjpeg -strict -2 -metadata:s:v title="Cover" -metadata:s:v comment="Cover (Front)" -disposition:v attached_pic 9-10.m4a
+
+ffmpeg -i 9-5.m4a -i 9-5.png -map 0:a -map 1:v -c:a copy -c:v mjpeg -strict -2 -metadata:s:v title="Cover" -metadata:s:v comment="Cover (Front)" -disposition:v attached_pic 9-5-new.m4a
