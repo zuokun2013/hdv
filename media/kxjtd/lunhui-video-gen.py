@@ -28,8 +28,27 @@ dazuo_list = [
 niansong_list2 = [
     ["ding-126626.mp3", "幻灯片1.PNG"],
     ["ding-126626.mp3", "幻灯片1.PNG"],
-    ["7.m4a", "幻灯片17.PNG"],
-    ["8-1.m4a", "幻灯片18.PNG"]
+    ["5-1.m4a", "幻灯片10.PNG"],
+    ["5-2.m4a", "幻灯片11.PNG"],
+    ["5-3.m4a", "幻灯片12.PNG"],
+    ["6-1.m4a", "幻灯片13.PNG"],
+    ["6-2.m4a", "幻灯片14.PNG"],
+    ["7.m4a", "幻灯片15.PNG"],
+    ["8-1.m4a", "幻灯片16.PNG"],
+    ["8-2.m4a", "幻灯片17.PNG"],
+    ["8-3.m4a", "幻灯片18.PNG"],
+    ["8-4.m4a", "幻灯片19.PNG"],
+    ["8-5.m4a", "幻灯片20.PNG"],
+    ["9-1.m4a", "幻灯片21.PNG"],
+    ["9-2.m4a", "幻灯片22.PNG"],
+    ["9-3.m4a", "幻灯片23.PNG"],
+    ["9-4.m4a", "幻灯片24.PNG"],
+    ["9-5.m4a", "幻灯片25.PNG"],
+    ["9-6.m4a", "幻灯片26.PNG"],
+    ["9-7.m4a", "幻灯片27.PNG"],
+    ["9-8.m4a", "幻灯片28.PNG"],
+    ["9-9.m4a", "幻灯片29.PNG"],
+    ["9-10.m4a", "幻灯片30.PNG"]
     ]
 
 
@@ -56,7 +75,7 @@ clips.append(ruzuo_video)
 
 append_audio_list(niansong_list1)
 
-for i in range(2):
+for i in range(9):
     append_audio_list(dazuo_list)
 
 append_audio_list(niansong_list2)
