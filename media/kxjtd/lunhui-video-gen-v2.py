@@ -15,18 +15,16 @@ niansong_list1 = [
 ]
 
 dazuo_list = [
-    ["5min-silence.m4a", "Slide1.png"],
-    ["5min-silence.m4a", "Slide1.png"],
+    ["1min-silence.m4a", "Slide1.png"],
+    ["1min-silence.m4a", "Slide1.png"],
     ["ding-126626.mp3", "Slide1.png"],
-    ["ding-101492.mp3", "Slide2.png"],
-    ["1min-silence.m4a", "Slide2.png"],
-    ["1min-silence.m4a", "Slide2.png"],
-    ["ding-126626.mp3", "Slide1.png"]
+    ["5min-silence.m4a", "Slide9.png"],
+    ["5min-silence.m4a", "Slide9.png"],
+    ["ding-126626.mp3", "Slide1.png"],
+    ["ding-101492.mp3", "Slide1.png"]
     ]
 
-
 niansong_list2 = [
-    ["ding-126626.mp3", "Slide1.png"],
     ["ding-126626.mp3", "Slide1.png"],
     ["5-1.m4a", "Slide10.png"],
     ["5-2.m4a", "Slide11.png"],
