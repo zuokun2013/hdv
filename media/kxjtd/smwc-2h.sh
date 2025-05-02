@@ -11,18 +11,20 @@ mpv $curdir/00入座v2.webm
 mpv $curdir/1.m4a
 mpv $curdir/2.m4a
 
-for i in {1..18}
+for i in {1..9}
 do
   date
-  echo "##################### Loop spin: " $i "/ 18 #####################"
+  echo "##################### Loop spin: " $i "/ 9 #####################"
   mpv $curdir/ding-126626.mp3  
   mpv $curdir/ding-126626.mp3  
   
+  mpv $curdir/1min-silence.m4a
   mpv $curdir/1min-silence.m4a
 
   mpv $curdir/ding-126626.mp3  
   mpv $curdir/ding-101492.mp3
   
+  mpv $curdir/5min-silence.m4a
   mpv $curdir/5min-silence.m4a
 done
 
