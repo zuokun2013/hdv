@@ -24,7 +24,15 @@ dazuo_list = [
     ]
 
 niansong_list2 = [
+    ["1min-silence.m4a", "Slide1.png"],
+    ["1min-silence.m4a", "Slide1.png"],
     ["ding-126626.mp3", "Slide1.png"],
+    ["5min-silence.m4a", "Slide7.png"],
+    ["1min-silence.m4a", "Slide7.png"],
+    ["ding-101492.mp3", "Slide1.png"],
+    ["ding-101492.mp3", "Slide1.png"],
+
+    ["ding-101492.mp3", "Slide1.png"],
     ["3.m4a", "Slide8.png"],
     ["4.m4a", "Slide9.png"],
     ["5-1.m4a", "Slide10.png"],
@@ -74,7 +82,7 @@ clips.append(ruzuo_video)
 
 append_audio_list(niansong_list1)
 
-for i in range(9):
+for i in range(8):
     append_audio_list(dazuo_list)
 
 append_audio_list(niansong_list2)
