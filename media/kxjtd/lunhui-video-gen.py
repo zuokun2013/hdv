@@ -75,7 +75,7 @@ clips.append(ruzuo_video)
 
 append_audio_list(niansong_list1)
 
-for i in range(9):
+for i in range(4):
     append_audio_list(dazuo_list)
 
 append_audio_list(niansong_list2)
@@ -83,4 +83,4 @@ append_audio_list(niansong_list2)
 clips.append(chuzuo_video)
 
 final_clip = concatenate_videoclips(clips)
-final_clip.write_videofile('./lunhui.mp4', fps=10, threads=8)
+final_clip.write_videofile('./lunhui-1h.mp4', fps=10, threads=8)
